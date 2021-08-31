@@ -86,6 +86,7 @@
 					dataType: 'json',
 					success: (res) => {
 						// console.log('1',_this);
+						console.log(e)
 						var encryptedData = e.detail.encryptedData;
 						var iv = e.detail.iv;
 						var pc = new wxLog('wxa1a4ff9c9a76354d', res.data.data.session_key)

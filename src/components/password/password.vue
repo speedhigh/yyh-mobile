@@ -155,7 +155,6 @@
 	.wrap {
 		width: 750upx;
 		min-height: 120upx;
-		// background-color: aqua;
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -165,7 +164,6 @@
 	.inputBox {
 		width: 570upx;
 		height: 88upx;
-		// background-color: skyblue;
 		margin-left: 90upx;
 		padding-top: 20upx;
 		margin-bottom: 10upx;
@@ -190,9 +188,6 @@
 		line-height: 48upx;
 	}
 
-	// 登录
-	.logBox {}
-
 	.log {
 		width: 570upx;
 		height: 72upx;
@@ -203,7 +198,6 @@
 		color: #fff;
 		line-height: 72upx;
 		text-align: center;
-		/* margin-left: 215upx; */
 		margin-top: 20upx;
 	}
 </style>

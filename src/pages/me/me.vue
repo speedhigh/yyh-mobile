@@ -5,21 +5,29 @@
 			<view class="page1" @click="messageYou" v-show="logState == 0">
 				<view class="topNo">
 					<view class="first">
-						<img @click.stop="login" class="head" :src="headImg2" mode=""></img>
+						<img @click.stop="login" class="head" :src="headImg2" mode="">
 						<view @click.stop="login" hover-stop-propagation="true" class="logName" url="../nolog/nolog">登录</view>
 					</view>
-
 				</view>
 			</view>
 
 			<!-- 登录后 -->
 			<view class="page2" v-show="logState == 1">
 				<view class="top">
+					<view style="position: relative">
+						<img :src="typeImaRole" style="width:100%; height:100%">
+						<view class="info">
+							<p>用户{{ user }}</p>
+							<p style="font-size: 22upx; margin-top:10upx">{{ dueDate }}到期</p>
+						</view>
+						<view class="cardno">
+							NO.{{ cardno.slice(0,4) + ' ' + cardno.slice(4,8) + ' ' + cardno.slice(8,12) + ' ' + cardno.slice(12)}}
+						</view>
+					</view>
+					<!--
 					<view class="first">
 						<image wx:if='headImg' class="head" :src="headImg" mode=""></image>
 						<image class="type" :src="typeImaRole" mode=""></image>
-						<!-- <image wx:show='typeImg1' class="type" :src="typeImg1" mode=""></image>
-						<image wx:show='typeImg2' class="type" :src="typeImg2" mode=""></image> -->
 						<view class="nameid">
 							用户id__{{user}}
 						</view>
@@ -27,22 +35,23 @@
 							卡号 : {{cardno}}
 						</view>
 					</view>
-					<view class="second">
-						<navigator :url="item.url" class="items" v-for="(item,i) in items" :key='i'>
-							<image class="itemsImg" :src="item.img" mode=""></image>
-							{{item.name}}
-						</navigator>
-						<!-- session-from="sobot|{{userInfo.nickName}}|{{userInfo.avatarUrl}}|{{params}}" -->
-						<button id="zcRobot" open-type="contact"></button>
-
-					</view>
+					-->
+				</view>
+				<navigator url="../changeInfo/changeInfo" style="margin-top: -75upx; position: relative" @click="fixInfo">
+					<img :src="dividersImg" alt="" style="width:100%">
+				</navigator >
+				<view class="second">
+					<navigator :url="item.url" class="items" v-for="(item,i) in items" :key='i'>
+						<image class="itemsImg" :src="item.img" mode=""></image>
+						{{ item.name }}
+					</navigator>
 				</view>
 				<!-- 广告banner区 -->
 				<!-- 其他功能区 -->
 				<view class="other" v-for="(item,i) in otherList" :key='i'>
 					<navigator :url="item.url" class="iconBox">
 						<image class="icon" :src="item.img" mode=""></image>
-						<view class="name">{{item.name}}</view>
+						<view class="name">{{ item.name }}</view>
 						<!-- <view class="name">
 							{{item.name}}
 						</view> -->
@@ -75,11 +84,15 @@
 				interval: 2000,
 				duration: 500,
 				user: "",
-				headImg: require("../../static/images/我的/头像.png"),
+				dueDate:"",
+				// headImg: require("../../static/images/我的/头像.png"),
 				headImg2: require("../../static/images/我的/头像未登录.png"),
 				typeImg: require("../../static/images/我的/游客登录.png"),
-				typeImg1: require("../../static/images/我的/悦享会员.png"),
-				typeImg2: require("../../static/images/我的/尊享会员.png"),
+				// typeImg1: require("../../static/images/我的/悦享会员.png"),
+				// typeImg2: require("../../static/images/我的/尊享会员.png"),
+				yueCardImg: require("../../static/images/我的/悦享.png"),
+				zunCardImg: require("../../static/images/我的/尊享.png"),
+				dividersImg: require("../../static/images/我的/上面的盖子.png"),
 				typeImaRole: undefined,
 				cardno: "未绑定",
 				logState: 0,
@@ -167,8 +180,8 @@
 					uni.getUserInfo({
 						provider: 'weixin',
 						success: function(infoRes) {
+							console.log(infoRes)
 							that.yonghuwx = infoRes.userInfo
-							console.log('6666666666', that.yonghuwx)
 						}
 					});
 				}
@@ -178,9 +191,9 @@
 			request({
 				url: "/wx-yuyihui/applets/user_interface/get_current_user",
 				method: 'get',
-
 				success: (res) => {
-					console.log(res, " 用户信息", res.data.data.roleStr, res.data.data.cardno);
+					console.log(res)
+					// console.log(res, " 用户信息", res.data.data.roleStr, res.data.data.cardno);
 					if (res.data.code == '0') {
 						this.logState = 1;
 						uni.setStorage({
@@ -189,6 +202,7 @@
 						})
 						// res.data.data包含了所有的用户信息
 						this.user = res.data.data.phone;
+						this.dueDate = res.data.data.dueDate
 						if (res.data.data.cardno == '0') {
 							this.cardno = "未绑定权益卡"
 						} else {
@@ -199,18 +213,18 @@
 							// this.typeImg1 = ""
 							// this.typeImg2 = ""
 						} else if (res.data.data.roleStr == '悦享会员') {
-							this.typeImaRole = this.typeImg1
+							this.typeImaRole = this.yueCardImg
 							// this.typeImg = ""
 							// this.typeImg2 = ""
 						} else {
-							this.typeImaRole = this.typeImg2
+							this.typeImaRole = this.zunCardImg
 							// this.typeImg = ""
 							// this.typeImg1 = ""
 						}
 					}
 				},
 				fail: (err) => {
-					console.log(err)
+					console.log('-----------------------',err)
 				}
 			})
 			// end
@@ -226,7 +240,6 @@
 			// 1end
 		},
 		onLoad(option) {
-			console.log('load')
 			let that = this;
 			uni.login({
 				provider: "weixin",
@@ -236,7 +249,6 @@
 						provider: 'weixin',
 						success: function(infoRes) {
 							that.yonghuwx = infoRes.userInfo
-							console.log('6666666666', that.yonghuwx)
 						}
 					});
 				}
@@ -296,8 +308,6 @@
 		},
 
 		methods: {
-
-
 			messageYou: function() {
 				uni.showToast({
 					title: "请您先登录",
@@ -309,8 +319,6 @@
 				uni.navigateTo({
 					url: '../../pages2/choiceLog/choiceLog'
 				})
-
-
 			},
 			logout: function(e) {
 				this.logState = 0;
@@ -321,9 +329,8 @@
 				uni.setStorage({
 					key: 'xtoken',
 					data: '1',
-
 				});
-			}
+			},
 		},
 
 	}
@@ -342,25 +349,22 @@
 		left: 0;
 		right: 0;
 		margin: 0 auto 20upx;
+		padding-bottom: 170upx;
 	}
 
 	.top {
-		padding-top: 1upx;
-		width: 750upx;
-		height: 370upx;
-		// background-color: pink;
-		background: url('../../static/images/我的/操作栏底.png') no-repeat 0 0;
-		background-size: 750upx 340upx;
+		padding: 40upx 32upx 0 32upx;
+		width: 100%;
+		height: 400upx;
+		box-sizing: border-box;
+		background: #2da5be;
 	}
 
 	.first {
 		width: 686upx;
 		height: 100upx;
-		// background-color: pink;
 		margin: 40upx auto 60upx;
 		position: relative;
-
-
 	}
 
 	.head {
@@ -392,71 +396,55 @@
 		font-size: 32upx;
 		color: #fff;
 	}
-.nameid {
+	.info {
 		position: absolute;
-		top: 12upx;
-		left: 120upx;
-		font-size: 32upx;
-		color: #fff;
+		top: 40upx;
+		left: 156upx;
+		font-size: 30upx;
+		color: #FBD6A0;
 	}
 	.cardno {
 		position: absolute;
-		top: 66upx;
-		left: 120upx;
-		font-size: 24upx;
-		color: #fff;
+		top: 180upx;
+		left: 32upx;
+		font-size: 30upx;
+		color: #FBD6A0;
 	}
 
 	.second {
-		width: 686upx;
 		height: 160upx;
 		background-color: #fff;
-		border-radius: 10upx;
-		margin: 0upx auto 10upx;
-		padding: 26upx 0upx;
+		display: flex;
+		justify-content: space-around;
+		padding: 26upx 16upx;
 		box-sizing: border-box;
-		position: absolute;
-		top: 180upx;
-		left: 32upx;
-		box-shadow: 2upx 2upx 2upx #f6f6f6, 2upx -2upx 2upx #f6f6f6, -2upx 2upx 2upx #f6f6f6, -2upx -2upx 2upx #f6f6f6;
 	}
 
 	.items {
 		width: 98upx;
 		height: 108upx;
-		// background-color: aqua;
-		float: left;
 		margin-left: 35upx;
 		margin-right: 35upx;
 		font-size: 24upx;
-
 	}
 
 	.itemsImg {
 		width: 74upx;
 		height: 74upx;
 		margin-left: 12upx;
-
 	}
 
 	.topNo {
 		padding-top: 1upx;
 		width: 750upx;
 		height: 1000upx;
-		// background-color: pink;
-		// 未登录背景图片
 		background: url('../../static/images/我的/操作栏底2.png') no-repeat 0 0;
 		background-size: 750upx 912upx;
-
-
-
-
 	}
 
 	.first {
 		width: 686upx;
 		height: 600upx;
-		// background-color: pink;
 		margin: 20upx auto 40upx;
 		position: relative;
 	}
@@ -486,7 +474,6 @@
 		height: 100upx;
 		margin-left: 32upx;
 		margin-top: 10upx;
-		// background-color: pink;
 		border-bottom: 1upx solid #f5f5f5;
 
 	}
@@ -501,7 +488,6 @@
 		width: 386upx;
 		height: 88upx;
 		margin-left: -30upx;
-		// background-color: skyblue;
 		line-height: 88upx;
 		font-size: 28upx;
 		color: #4c4c4c;

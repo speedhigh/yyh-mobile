@@ -6,20 +6,19 @@
 					<image class="icon" :src="iconUser" mode=""></image>
 					<input class="input" maxlength="11" name="phone" v-model="InputTel" placeholder="请输入您的手机号" />
 				</view>
-
 				<view class="inputBox">
 					<image class="icon" :src="iconPass" mode=""></image>
 					<input class="input" password="true" name="yzm" placeholder="请输入验证码" v-model="InputCaptcha" />
 					<view class="send" @click="sendCaptcha" type="default" :style="{backgroundColor:captchaState==true?'#2da5be':'#ddd'}">
 						{{captcha}}</view>
 				</view>
-<view class="inputBox">
+				<view class="inputBox">
 					<image class="icon" :src="iconPass" mode=""></image>
 					<input class="input" minlength="6" maxlength="16" password="true" v-model="pass1" name="密码1" placeholder="请输入密码" />
 				</view>
 				<view class="inputBox">
 					<image class="icon" :src="iconPass" mode=""></image>
-					<input class="input"minlength="6"  maxlength="16" password="true" v-model="pass2" name="密码2" placeholder="请再次输入密码" />
+					<input class="input" minlength="6"  maxlength="16" password="true" v-model="pass2" name="密码2" placeholder="请再次输入密码" />
 				</view>
 				<view class="inputBox">
 					<image class="icon" :src="iconUser" mode=""></image>
@@ -33,15 +32,12 @@
 				</view>
 				<view class="logBox">
 					<button class="log" form-type="submit">注册</button>
-
 					<!-- <button type="default" form-type="reset">Reset</button> -->
 				</view>
-
 			</form>
 		</view>
 	</view>
 </template>
-
 <script>
 	var graceChecker = require("../../js_sdk/graceui-dataChecker/graceChecker.js");
 	import request from '../../js_sdk/request/request.js' //引进requst方法
@@ -108,10 +104,8 @@
 						wx.nextTick(function() {
 							_this.InputCard = res.result
 							console.log("data數據", _this.InputCard)
-
 						})
 					},
-
 				});
 			},
 
@@ -170,9 +164,9 @@
 							url: '/wx-yuyihui/applets/user_interface/register',
 							method: 'POST',
 							data: {
-								phone: this.InputTel,
+								phone:  this.InputTel,
 								captcha: this.InputCaptcha,
-								password:this.pass1,
+								password: this.pass1,
 								cardno: this.InputCard,
 								cardPasswd: this.InputPass,
 							},
@@ -201,20 +195,13 @@
 								}
 							}
 						});
-
-
-				} else {
-					uni.showToast({
-						title: graceChecker.error,
-						icon: "none"
-					});
-					this.sendAxiosState == true;
-
-				}
-
-
-
-
+					} else {
+						uni.showToast({
+							title: graceChecker.error,
+							icon: "none"
+						});
+						this.sendAxiosState == true;
+					}
 			},
 			formReset: function(e) {
 				console.log('清空数据')
@@ -247,7 +234,7 @@
 						header: {
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
-						url: 'https://www.yuyihui.com.cn:8886//wx-yuyihui/applets/no_check/send_captcha',
+						url: '/wx-yuyihui/applets/no_check/send_captcha',
 						method: 'POST',
 						data: {
 							phone: this.InputTel,
@@ -295,27 +282,21 @@
 	.wrap {
 		width: 750upx;
 		min-height: 120upx;
-		// background-color: aqua;
 		position: absolute;
 		left: 0;
 		right: 0;
 		margin: 0 auto 20upx;
-
-
 	}
 
 	.inputBox {
 		width: 686upx;
 		height: 88upx;
-		// background-color: skyblue;
 		margin-left: 32upx;
 		padding-top: 20upx;
 		margin-bottom: 10upx;
 		box-sizing: border-box;
 		border-bottom: 1upx solid #333333;
 		position: relative;
-
-
 	}
 	.input{
 		width: 500upx;
@@ -358,9 +339,6 @@
 		float: left;
 		line-height: 88upx;
 	}
-
-	// 登录
-	.logBox {}
 
 	.log {
 		width: 360upx;

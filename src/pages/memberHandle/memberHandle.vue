@@ -1,16 +1,6 @@
 <template>
 	<view class="all">
-		<view class="orderState" v-show="">
-			<view class="">
-				是否支付成功?
-			</view>
-			<view @click="yes">
-				是
-			</view>
-			<view @click="no">
-				否
-			</view>
-		</view>
+		<!--  
 		<view class="zx">
 			<image v-show="type==1" :class="type==1?'zximg active':'zximg'" @click="type=1" src="../../static/images/我的/new/尊享版触发.png"
 			 mode=""></image>
@@ -23,6 +13,7 @@
 			<image v-show="type==1" :class="type==2?'zximg active':'zximg'" @click="type=2" src="../../static/images/我的/new/悦享版未触发.png"
 			 mode=""></image>
 		</view>
+		-->
 		<!-- 	<view class="">
 			<text>{{type == 1? '尊享':'悦享'}} </text>
 		</view> -->
@@ -46,7 +37,6 @@
 				<pick-regions :defaultRegion="defaultRegionCode" @getRegion="handleGetRegion">
 					<image class="choice" src="../../static/images/我的/new/right.png" mode=""></image>
 				</pick-regions>
-
 			</view>
 			<view class="a a1 ">
 				<text class="aTxt">详细地址</text>
@@ -54,6 +44,15 @@
 				</view>
 		</view>
 	
+		<view class="card">
+			<view style="font-size: 32upx;">是否办理实体卡</view>
+			<view style="font-size: 16upx; margin-left:20upx">(需12元工本费)</view>
+		</view>
+		<view class="cardContent" @click="cardType = !cardType">
+			<view style="font-size: 28upx;">办理实体卡</view>
+			<image class="cardPick" v-show="cardType" src="../../static/images/我的/new/触发.png"></image>
+			<image class="cardPick" v-show="!cardType"  src="../../static/images/我的/new/未触发.png"></image>
+		</view>
 
 		<view class="address">
 			选择支付方式
@@ -95,6 +94,7 @@
 				type: '',
 				// 1 微信  0支付宝
 				payType:'1',
+				cardType:false,
 				region: [],
 				defaultRegion: ['广东省', '广州市', '番禺区'],
 				defaultRegionCode: '440113'
@@ -118,12 +118,12 @@
 			// console.log("ready",localStorage.getItem('orderId'))
 			if(sessionStorage.getItem('orderId')){
 				wx.showModal({
-				      title: '点击支付后的弹窗',
-				      content: '您是否完成支付？',
-				      success: function (res) {
-				        if (res.confirm) {  
-				          console.log('点击确认回调')
-						 request({
+				  title: '点击支付后的弹窗',
+				  content: '您是否完成支付？',
+				  success: function (res) {
+				    if (res.confirm) {  
+				    	console.log('点击确认回调')
+						 	request({
 						 	// 提交订单
 						 	url: "/wx-yuyihui/applets/pay/query_order_status",
 						 	method: 'POST',
@@ -196,8 +196,8 @@
 			},
 			// urlencode方法
 			str2ASCII(val) {
-			     return ("0" + val.charCodeAt(0).toString(16)).slice(-2);
-			   },
+				return ("0" + val.charCodeAt(0).toString(16)).slice(-2);
+			},
 			 UrlEncode(str) {
 			      var res = "";
 			      var strSpec = "!\"#$%&'()*+,/:;<=>?[]^`{|}~%";
@@ -220,23 +220,15 @@
 			    },
 			
 				// urlencode方法结束
-			confirm(){
+			confirm() {
 				// 支付宝支付没开通
-				if(this.payType == 0){
-					uni.showToast({
-						title:"支付宝支付暂未开通",
-						icon:'none'
-					})
-					return;
+				if(this.payType == 0) {
+					uni.showToast({ title:"支付宝支付暂未开通", icon:'none' })
+					return
 				}
 				var price;
 				var detail;
-				
-				if(this.type ==1 ){
-					price = '1180'
-				}else{
-					price = '680'
-				}
+				if(this.cardType ){ price = '212' }else{ price = '200' }
 				if(this.name=="" || this.phone==""|| this.address==""||this.region==""||this.address ==""){
 					uni.showToast({
 						title:"请填写完整信息",
@@ -244,7 +236,7 @@
 					})
 					return;
 				}
-				detail = this.region[0].name +this.region[1].name +this.region[2].name +this.address
+				detail = this.region[0].name + this.region[1].name + this.region[2].name + this.address
 				console.log("信息",price,this.name,this.phone,this.address,this.region,detail)
 				
 				request({
@@ -252,16 +244,16 @@
 					url: "/wx-yuyihui/applets/pay/submit_order",
 					method: 'POST',
 					data: {
-						totalAmount:'0.01',
-						subject:'微信支付测试',
+						totalAmount:price,
+						subject:'微信支付',
 						// 0 支付宝 1 微信
 						paymethod:parseInt(this.payType),
-						name:'cxy',
-						phone:"15552277312",
-						detail:"11",
-						
+						name: this.name,
+						phone: this.phone,
+						detail:detail,	
 					},
 					success: (res) => {
+						console.log('---------------',res)
 						uni.showToast({
 							title:res.data.msg,
 							icon:"none"
@@ -272,7 +264,7 @@
 						localStorage.setItem("phone",this.phone)
 						localStorage.setItem("address",this.address)
 						console.log("支付测试成功:", res);
-						this.orderId = res.data.data.outTradeNo
+						// this.orderId = res.data.data.outTradeNo
 						sessionStorage.setItem("orderId",this.orderId)
 						// var web = `http://mobile.yuyihui.com.cn/#/pages/memberHandle/memberHandle?id=${this.type}&name=${this.name}&phone=${this.phone}&address=${this.address}`
 						// console.log(this.name,this.UrlEncode(web))
@@ -280,24 +272,22 @@
 						// // escape()，encodeURI()，以及encodeURIComponent()
 						// aim = res.data.data.mweb_url+"&redirect_url="+this.UrlEncode(web)
 						// window.location.href = aim
-						window.location.href =res.data.data.mweb_url
+						// window.location.href = res.data.data.mweb_url
 						wx.showModal({
-						      title: '点击支付后的弹窗',
-						      content: '您是否完成支付？',
-						      success: function (res) {
-						        if (res.confirm) {  
-						          console.log('点击确认回调')
-								 request({
-								 	// 提交订单
-								 	url: "/wx-yuyihui/applets/pay/query_order_status",
-								 	method: 'POST',
-								 	data: {
+							title: '点击支付后的弹窗',
+							content: '您是否完成支付？',
+							success: function (res) {
+								if (res.confirm) {
+									request({
+									// 提交订单
+									url: "/wx-yuyihui/applets/pay/query_order_status",
+									method: 'POST',
+									data: {
 										// 没有this
-								 		outTradeNo: sessionStorage.getItem('orderId'),	
-								 	},
+										outTradeNo: sessionStorage.getItem('orderId'),	
+									},
 								 	success: (res) => {
-								 		console.log("支付状态成功:", res)
-								
+								 		console.log("支付状态成功:", res)	
 										// uni.showToast({
 										// 	title:res.data.code,
 										// 	icon:"none"
@@ -321,7 +311,6 @@
 								 			})
 											sessionStorage.removeItem("orderId")
 								 		}
-								 	
 								 	},
 								 	fail: (err) => {
 								 		console.log("支付状态失败:",err)
@@ -505,6 +494,29 @@
 		height: 60upx;
 		overflow: hidden;
 		font-weight: none;
+	}
+	/* 实体卡 */
+	.card {
+		margin-top: 40upx;
+		margin-bottom: 30upx;
+		display: flex;
+		align-items: flex-end;
+	}
+	.cardContent {
+		width: 686upx;
+		height: 100%;
+		overflow: hidden;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 30upx;
+		border-radius: 10upx;
+		box-shadow: 2upx 2upx 2upx #f7f7f7, 2upx -2upx 2upx #f7f7f7, -2upx 2upx 2upx #f7f7f7, -2upx -2upx 2upx #f7f7f7;
+	}
+	.cardPick {
+		width: 16upx;
+		height: 16upx;
 	}
 	/* 支付方式 */
 	.addressContent2 {

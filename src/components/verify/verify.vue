@@ -13,10 +13,8 @@
 						{{captcha}}</view>
 				</view>
 
-
 				<view class="logBox">
 					<button class="log" form-type="submit">登录</button>
-
 					<!-- <button type="default" form-type="reset">Reset</button> -->
 				</view>
 			</form>
@@ -135,10 +133,6 @@
 						icon: "none"
 					});
 				}
-
-
-
-
 			},
 			formReset: function(e) {
 				console.log('清空数据')
@@ -178,7 +172,6 @@
 						},
 						dataType: 'json',
 						success: (res) => {
-
 							if (res.data.code == "0") {
 								uni.showToast({
 									title: res.data.msg,
@@ -187,7 +180,6 @@
 								console.log(res, "发送短信成功")
 								return;
 							} else {
-
 								// 失败
 								uni.showToast({
 									title: res.data.msg,
@@ -218,12 +210,10 @@
 	.wrap {
 		width: 750upx;
 		min-height: 120upx;
-		// background-color: aqua;
 		position: absolute;
 		left: 0;
 		right: 0;
 		margin: 0 auto 20upx;
-
 	}
 
 	.inputBox {
@@ -235,8 +225,6 @@
 		box-sizing: border-box;
 		border-bottom: 1upx solid #E6E6E6;
 		position: relative;
-
-
 	}
 	.inputVer{
 		width: 160upx;
@@ -271,9 +259,6 @@
 		height: 48upx;
 	}
 
-	// 登录
-	.logBox {}
-
 	.log {
 		width: 570upx;
 		height: 72upx;
@@ -283,8 +268,6 @@
 		color: #fff;
 		line-height: 72upx;
 		text-align: center;
-		/* margin-left: 215upx; */
 		margin-top: 20upx;
-
 	}
 </style>

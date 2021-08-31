@@ -1,183 +1,189 @@
 {
-	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationBarTitleText": "海外药品"
-			// "enablePullDownRefresh": true //开启下拉刷新
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "海外药品"
+			}
+		},
+		{
+			"path": "pages/me/me",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": "医药资讯"
+			}
+		},
+		{
+			"path": "pages/nolog/nolog",
+			"style": {
+				"navigationBarTitleText": "账号密码登录"
+			}
+		},
+		{
+			"path": "pages/aboutMe/aboutMe",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		},
+		{
+			"path": "pages/changeCard/changeCard",
+			"style": {
+				"navigationBarTitleText": "权益卡绑定"
+			}
+		},
+		{
+			"path": "pages/changePassword/changePassword",
+			"style": {
+				"navigationBarTitleText": "修改密码"
+			}
+		},
+		{
+			"path": "pages/changePhone/changePhone",
+			"style": {
+				"navigationBarTitleText": "修改手机"
+			}
+		},
+		{
+			"path": "pages/changeInfo/changeInfo",
+			"style": {
+				"navigationBarTitleText": "修改信息"
+			}
+		},
+		{
+			"path": "pages/kefu/kefu",
+			"style": {
+				"navigationBarTitleText": "我的客服"
+			}
+		},
+		{
+			"path": "pages/memberBenefit/memberBenefit",
+			"style": {
+				"navigationBarTitleText": "会员权益"
+			}
+		},
+		{
+			"path": "pages/newsDetail/newsDetail",
+			"style": {
+				"navigationBarTitleText": "资讯详情"
+			}
+		},
+		{
+			"path": "pages2/yijian/yijian",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "赴日医检"
+			}
+		},
+		{
+			"path": "pages2/details/details",
+			"style": {
+				"navigationBarTitleText": "药品详情"
+			}
+		},
+		{
+			"path": "pages2/searchDetail/searchDetail",
+			"style": {
+				"navigationBarTitleText": "药品分类"
+			}
+		},
+		{
+			"path": "pages2/myCollection/myCollection",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "pages2/watchHistory/watchHistory",
+			"style": {
+				"navigationBarTitleText": "浏览历史"
+			}
+		},
+		{
+			"path": "pages2/choiceLog/choiceLog",
+			"style": {
+				"navigationBarTitleText": "登陆方式"
+			}
+		},
+		{
+			"path": "pages2/verifyLog/verifyLog",
+			"style": {
+				"navigationBarTitleText": "验证码登录"
+			}
+		},
+		{
+			"path": "pages2/buyCommodity/buyCommodity",
+			"style": {
+				"navigationBarTitleText": "药品购买流程",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/bodyPackage/bodyPackage",
+			"style": {
+				"navigationBarTitleText": "体检套餐",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/hospitalList/hospitalList",
+			"style": {
+				"navigationBarTitleText": "医院列表",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/professorDetail/professorDetail",
+			"style": {
+				"navigationBarTitleText": "专家详情",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/hospitalDetail/hospitalDetail",
+			"style": {
+				"navigationBarTitleText": "医院详情",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages2/register/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/memberCard/memberCard",
+			"style": {
+				"navigationBarTitleText": "会员办理",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/memberHandle/memberHandle",
+			"style": {
+				"navigationBarTitleText": "权益卡办理",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/memberOver/memberOver",
+			"style": {
+				"navigationBarTitleText": "支付状态",
+				"enablePullDownRefresh": false
+			}
 		}
-	}, {
-		"path": "pages/me/me",
-		"style": {
-			"navigationBarTitleText": "个人中心"
-		}
-	}, {
-		"path": "pages/news/news",
-		"style": {
-			"navigationBarTitleText": "医药资讯"
-		}
-	}, {
-		"path": "pages/nolog/nolog",
-		"style": {
-			"navigationBarTitleText": "账号密码登录"
-
-		}
-	}, {
-		"path": "pages/aboutMe/aboutMe",
-		"style": {
-			"navigationBarTitleText": "关于我们"
-		}
-	}, {
-		"path": "pages/changeCard/changeCard",
-		"style": {
-			"navigationBarTitleText": "权益卡绑定"
-		}
-	}, {
-		"path": "pages/changePassword/changePassword",
-		"style": {
-			"navigationBarTitleText": "修改密码"
-		}
-	}, {
-		"path": "pages/changePhone/changePhone",
-		"style": {
-			"navigationBarTitleText": "修改手机"
-		}
-	}, {
-		"path": "pages/kefu/kefu",
-		"style": {
-			"navigationBarTitleText": "我的客服"
-		}
-	}, {
-		"path": "pages/memberBenefit/memberBenefit",
-		"style": {
-			"navigationBarTitleText": "会员权益"
-		}
-	}, {
-		"path": "pages/newsDetail/newsDetail",
-		"style": {
-			"navigationBarTitleText": "资讯详情"
-		}
-	}, {
-		"path": "pages2/yijian/yijian",
-		"style": {
-			"enablePullDownRefresh": true,
-			"navigationBarTitleText": "赴日医检"
-		}
-
-	}, {
-		"path": "pages2/details/details",
-		"style": {
-			"navigationBarTitleText": "药品详情"
-		}
-	}, {
-		"path": "pages2/searchDetail/searchDetail",
-		"style": {
-			"navigationBarTitleText": "药品分类"
-		}
-	}, {
-		"path": "pages2/myCollection/myCollection",
-		"style": {
-			"navigationBarTitleText": "我的收藏"
-		}
-	}, {
-		"path": "pages2/watchHistory/watchHistory",
-		"style": {
-			"navigationBarTitleText": "浏览历史"
-		}
-	}, {
-		"path": "pages2/choiceLog/choiceLog",
-		"style": {
-			"navigationBarTitleText": "登陆方式"
-		}
-	}, {
-		"path": "pages2/verifyLog/verifyLog",
-		"style": {
-			"navigationBarTitleText": "验证码登录"
-		}
-	}, {
-		"path": "pages2/buyCommodity/buyCommodity",
-		"style": {
-			"navigationBarTitleText": "药品购买流程",
-			"enablePullDownRefresh": false
-		}
-	}    ,{
-            "path" : "pages/bodyPackage/bodyPackage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "体检套餐",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/hospitalList/hospitalList",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "医院列表",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/professorDetail/professorDetail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "专家详情",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/hospitalDetail/hospitalDetail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "医院详情",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages2/register/register",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "注册",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/memberCard/memberCard",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "会员办理",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/memberHandle/memberHandle",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "权益卡办理",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/memberOver/memberOver",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "支付状态",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	// 分包
 	// "subPackages": [{
 	// 	"root": "pagesA",
 	// 	"pages": [
 	// 		"pages/hosplialList/hosplialList"
-			
 	// 	]
 	// }],
 	// "preloadRule": {
@@ -192,7 +198,6 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#2da5be",
 		"backgroundColor": "#FFFFFF"
-
 	},
 	"tabBar": {
 		"color": "#7A7E83",
@@ -202,7 +207,8 @@
 		"height": "10px",
 		"fontSize": "11x",
 		"iconWidth": "24px",
-		"list": [{
+		"list": [
+			{
 				"pagePath": "pages/index/index",
 				"iconPath": "./static/images/标签栏/药品未触发.png",
 				"selectedIconPath": "./static/images/标签栏/药品触发.png",
@@ -219,7 +225,8 @@
 				"iconPath": "./static/images/标签栏/资讯未触发.png",
 				"selectedIconPath": "./static/images/标签栏/资讯触发.png",
 				"text": "医药资讯"
-			}, {
+			},
+			{
 				"pagePath": "pages/me/me",
 				"iconPath": "./static/images/标签栏/我的未触发.png",
 				"selectedIconPath": "./static/images/标签栏/我的触发.png",
