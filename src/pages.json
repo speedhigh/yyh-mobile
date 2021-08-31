@@ -179,20 +179,6 @@
 			}
 		}
 	],
-	// 分包
-	// "subPackages": [{
-	// 	"root": "pagesA",
-	// 	"pages": [
-	// 		"pages/hosplialList/hosplialList"
-	// 	]
-	// }],
-	// "preloadRule": {
-	//         "pagesA/pages/hosplialList/hosplialList": {
-	//             "network": "all",
-	//             "packages": ["pagesA"]
-	//         }
-	//     },
-	// 分包结束
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
@@ -204,7 +190,7 @@
 		"selectedColor": "#2da5be",
 		"borderStyle": "black",
 		"backgroundColor": "#fff",
-		"height": "10px",
+		"height": "48px",
 		"fontSize": "11x",
 		"iconWidth": "24px",
 		"list": [

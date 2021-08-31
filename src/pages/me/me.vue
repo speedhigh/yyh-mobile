@@ -192,7 +192,7 @@
 				url: "/wx-yuyihui/applets/user_interface/get_current_user",
 				method: 'get',
 				success: (res) => {
-					console.log(res)
+					console.log('--',res)
 					// console.log(res, " 用户信息", res.data.data.roleStr, res.data.data.cardno);
 					if (res.data.code == '0') {
 						this.logState = 1;
