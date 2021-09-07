@@ -11,7 +11,6 @@
 			<view id="okk" scroll-with-animation>
 				<!-- 消息 -->
 				<view class="flex-column-start" v-for="(x,i) in msgList" :key="i">
-
 					<!-- 用户消息 头像可选加入-->
 					<view v-if="x.my" class="flex justify-end padding-right one-show  align-start  padding-top">
 						<!-- 	<image v-if="!x.my" class="chat-img" src="../../static/..." mode="aspectFill" ></image> -->
@@ -56,8 +55,6 @@
 									<text class="padding-left" style="color: #1396c5;">换一批</text>
 								</view> -->
 								</view>
-
-
 							</view>
 						</view>
 					</view>

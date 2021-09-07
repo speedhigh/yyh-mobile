@@ -159,10 +159,6 @@
 					url: "/wx-yuyihui/applets/user_interface/get_current_user",
 					method: 'GET',
 					success: (res) => {
-						uni.navigateTo({
-							url: "../memberCard/memberCard"
-						})
-						/** 
 						console.log("获取用户成功:", res);
 						if (res.data.code == '0') {
 							console.log('已登录')
@@ -175,7 +171,6 @@
 								icon: "none"
 							})
 						}
-						*/
 					},
 					fail: (err) => {
 						console.log("获取当前用户:", err)

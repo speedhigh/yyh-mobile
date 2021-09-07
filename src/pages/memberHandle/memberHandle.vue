@@ -31,22 +31,22 @@
 			</view>
 			<view class="a">
 				<text class="aTxt">选择地区</text>
-				<pick-regions :defaultRegion="defaultRegionCode" @getRegion="handleGetRegion">
+				<pick-regions style="margin-top:-95upx" :defaultRegion="defaultRegionCode" @getRegion="handleGetRegion">
 					<text class='choiceContent'>{{regionName}}</text>
 				</pick-regions>
 				<pick-regions :defaultRegion="defaultRegionCode" @getRegion="handleGetRegion">
 					<image class="choice" src="../../static/images/我的/new/right.png" mode=""></image>
 				</pick-regions>
 			</view>
-			<view class="a a1 ">
+			<view class="a a1">
 				<text class="aTxt">详细地址</text>
-				<textarea v-model="address" type="" class="aInput area" type="text" value="" />
-				</view>
+				<textarea v-model="address" class="aInput area" type="text" value="" />
+			</view>
 		</view>
 	
 		<view class="card">
 			<view style="font-size: 32upx;">是否办理实体卡</view>
-			<view style="font-size: 16upx; margin-left:20upx">(需12元工本费)</view>
+			<view style="font-size: 25upx; margin-left:20upx">(需12元工本费)</view>
 		</view>
 		<view class="cardContent" @click="cardType = !cardType">
 			<view style="font-size: 28upx;">办理实体卡</view>
@@ -64,22 +64,20 @@
 				<image class="pick" v-show="payType==1" src="../../static/images/我的/new/触发.png" mode=""></image>
 				<image class="pick" v-show="payType==0"  src="../../static/images/我的/new/未触发.png" mode=""></image>
 			</view>
-		<view class="a2 aspect" @click="payType =0">
-			<image src="../../static/images/我的/new/支付宝.png" mode=""></image>
-			<text class="aTxt a2Txt">支付宝支付</text>
-			<image class="pick" v-show="payType==0"  src="../../static/images/我的/new/触发.png" mode=""></image>
-			<image class="pick" v-show="payType==1"  src="../../static/images/我的/new/未触发.png" mode=""></image>
+			<view class="a2 aspect" @click="payType =0">
+				<image src="../../static/images/我的/new/支付宝.png" mode=""></image>
+				<text class="aTxt a2Txt">支付宝支付</text>
+				<image class="pick" v-show="payType==0"  src="../../static/images/我的/new/触发.png" mode=""></image>
+				<image class="pick" v-show="payType==1"  src="../../static/images/我的/new/未触发.png" mode=""></image>
+			</view>
 		</view>
-		</view>
-		<button class="confirm" @click="confirm()">
-			确认
-		</button>	
+		<button class="confirm" @click="confirm()">确认</button>	
 	</view>
 </template>
 
 <script>
 	import pickRegions from '../../components/pick-regions/pick-regions.vue'
-	import request from '../../js_sdk/request/request.js' //引进requst方法
+	import request from '../../js_sdk/request/request.js' // 引进requst方法
 	export default {
 		components: {
 			pickRegions,
@@ -107,12 +105,10 @@
 		onShow(option) {
 		console.log('权益卡办理', option,this.orderId);
 		// this.type = option.id || localStorage.getItem("type") ;
-		// 	this.name = localStorage.getItem("name");
-		// 	this.phone =localStorage.getItem("phone");
-		// 	this.address = 	localStorage.getItem("address");
-		// 	this.orderId =	localStorage.getItem("orderId");
-		
-			
+		// this.name = localStorage.getItem("name");
+		// this.phone =localStorage.getItem("phone");
+		// this.address = 	localStorage.getItem("address");
+		// this.orderId =	localStorage.getItem("orderId");
 		},
 		onReady() {
 			// console.log("ready",localStorage.getItem('orderId'))
@@ -129,7 +125,7 @@
 						 	method: 'POST',
 						 	data: {
 								// 没有this
-						 		outTradeNo: sessionStorage.getItem('orderId'),	
+						 		outTradeNo: sessionStorage.getItem('orderId'),
 						 	},
 						 	success: (res) => {
 						 		console.log("支付状态成功:", res,res.data.msg)
@@ -168,8 +164,8 @@
 						 })
 				        } else {   
 				          console.log('点击取消回调')
-						this.orderId = "";
-						sessionStorage.removeItem("orderId")
+									this.orderId = "";
+									sessionStorage.removeItem("orderId")
 				        }
 				      }
 				    })
@@ -238,7 +234,6 @@
 				}
 				detail = this.region[0].name + this.region[1].name + this.region[2].name + this.address
 				console.log("信息",price,this.name,this.phone,this.address,this.region,detail)
-				
 				request({
 					// 提交订单
 					url: "/wx-yuyihui/applets/pay/submit_order",
@@ -250,7 +245,7 @@
 						paymethod:parseInt(this.payType),
 						name: this.name,
 						phone: this.phone,
-						detail:detail,	
+						detail: detail,	
 					},
 					success: (res) => {
 						console.log('---------------',res)
@@ -263,20 +258,21 @@
 						localStorage.setItem("name",this.name)
 						localStorage.setItem("phone",this.phone)
 						localStorage.setItem("address",this.address)
-						console.log("支付测试成功:", res);
-						// this.orderId = res.data.data.outTradeNo
+						this.orderId = res.data.data.outTradeNo
 						sessionStorage.setItem("orderId",this.orderId)
+						// var web = `http://mobile.yuyihui.com.cn/#/pages/memberHandle/memberHandle?id=${this.type}&name=${this.name}&phone=${this.phone}&address=${this.address}`
 						// var web = `http://mobile.yuyihui.com.cn/#/pages/memberHandle/memberHandle?id=${this.type}&name=${this.name}&phone=${this.phone}&address=${this.address}`
 						// console.log(this.name,this.UrlEncode(web))
 						// var aim;
 						// // escape()，encodeURI()，以及encodeURIComponent()
 						// aim = res.data.data.mweb_url+"&redirect_url="+this.UrlEncode(web)
 						// window.location.href = aim
-						// window.location.href = res.data.data.mweb_url
+						window.location.href = res.data.data.mweb_url
 						wx.showModal({
 							title: '点击支付后的弹窗',
 							content: '您是否完成支付？',
 							success: function (res) {
+								console.log('!!!!!!!!!!!!',res)
 								if (res.confirm) {
 									request({
 									// 提交订单
@@ -323,8 +319,8 @@
 								 })
 						        } else {   
 						          console.log('点击取消回调')
-								this.orderId = "";
-								sessionStorage.removeItem("orderId")
+											this.orderId = "";
+											sessionStorage.removeItem("orderId")
 						        }
 						      }
 						    })

@@ -11,8 +11,7 @@
 				<view class="inputBox">
 					<image class="icon" :src="iconPass" mode=""></image>
 					<input class="input" password="true" name="yzm" placeholder="请输入验证码" v-model="InputCaptcha" />
-					<view class="send" @click="sendCaptcha" type="default" :style="{backgroundColor:captchaState==true?'#2da5be':'#ddd'}">
-						{{captcha}}</view>
+					<view class="send" @click="sendCaptcha" type="default" :style="{backgroundColor:captchaState==true?'#2da5be':'#ddd'}">{{captcha}}</view>
 				</view>
 
 				<view class="inputBox">
@@ -77,6 +76,7 @@
 			getAxios: function() {
 				uni.request({
 					url: "https://www.yuyihui.com.cn:8886/ow-yuyihui/article_ask/detail?id=1",
+					// url: "http://192.168.1.109:8886/ow-yuyihui/article_ask/detail?id=1",
 					method: 'get',
 					success: (res) => {
 						console.log(res, "返回的信息");
@@ -229,6 +229,7 @@
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
 						url: 'https://www.yuyihui.com.cn:8886//wx-yuyihui/applets/no_check/send_captcha',
+						// url: "http://192.168.1.109:8886/wx-yuyihui/applets/no_check/send_captcha",
 						method: 'POST',
 						data: {
 							phone: this.InputTel,
@@ -276,27 +277,21 @@
 	.wrap {
 		width: 750upx;
 		min-height: 120upx;
-		// background-color: aqua;
 		position: absolute;
 		left: 0;
 		right: 0;
 		margin: 0 auto 20upx;
-
-
 	}
 
 	.inputBox {
 		width: 686upx;
 		height: 88upx;
-		// background-color: skyblue;
 		margin-left: 32upx;
 		padding-top: 20upx;
 		margin-bottom: 10upx;
 		box-sizing: border-box;
 		border-bottom: 1upx solid #333333;
 		position: relative;
-
-
 	}
 
 	.get {
@@ -339,9 +334,6 @@
 		line-height: 56upx;
 		height: 56upx;
 	}
-
-	// 登录
-	.logBox {}
 
 	.log {
 		width: 360upx;

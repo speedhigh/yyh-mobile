@@ -72,15 +72,14 @@
 				key: 'user',
 				success: function(res) {
 					console.log(res, "得到的user");
-					that.InputTel = res.data.phone;
 				}
 			});
-
 		},
 		methods: {
 			getAxios: function() {
 				uni.request({
 					url: "https://www.yuyihui.com.cn:8886/ow-yuyihui/article_ask/detail?id=1",
+					// url: "http://192.168.1.109:8886/ow-yuyihui/article_ask/detail?id=1",
 					method: 'get',
 					success: (res) => {
 						console.log(res, "返回的信息");
@@ -158,9 +157,7 @@
 						// 请求已经发送暂时停止发送
 						// {"phone":"17662731139","verificationCode":"123456","cardno":"89897220220614","cardpw":"346348"}
 						request({
-							header: {
-								'Content-Type': 'application/json'
-							},
+							header: {'Content-Type': 'application/json'},
 							url: '/wx-yuyihui/applets/user_interface/register',
 							method: 'POST',
 							data: {
@@ -182,16 +179,22 @@
 									setTimeout(function() {
 										this.sendAxiosState == true;
 										uni.reLaunch({
-											url: "../me/me?id=1&name=cxy"
+											url: "../../pages/me/me"
 										})
-									}, 100)
+									}, 1500)
 								} else {
-
-									uni.showToast({
-										title: res.data.msg,
-										icon: "none"
-									});
-									return
+									if(res.data.msg === '该手机号已经注册，请直接登录') {
+										uni.showToast({ title: res.data.msg, icon: "none" });
+										setTimeout(function() {
+											this.sendAxiosState == true;
+											uni.reLaunch({
+												url: "../../pages/me/me"
+											})
+										}, 1500)
+									} else {
+										uni.showToast({ title: res.data.msg, icon: "none" });
+										return
+									}
 								}
 							}
 						});
@@ -234,7 +237,9 @@
 						header: {
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
-						url: '/wx-yuyihui/applets/no_check/send_captcha',
+						// url: '/wx-yuyihui/applets/no_check/send_captcha',
+						url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/no_check/send_captcha",
+						// url: "http://192.168.1.109:8886/wx-yuyihui/applets/no_check/send_captcha",
 						method: 'POST',
 						data: {
 							phone: this.InputTel,
@@ -259,7 +264,6 @@
 						}
 					})
 					// end
-
 				} else {
 					uni.showToast({
 						title: "请输入正确的手机号",

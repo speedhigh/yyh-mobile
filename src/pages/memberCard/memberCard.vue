@@ -5,9 +5,9 @@
 			<view class="coupon" @click="goZx">
 				<img :src="couponImg" style="width:100%; height:100%">
 			</view>
-			<view class="consult">
+			<navigator url="../kefu/kefu" class="consult">
 				<img :src="consultImg" style="width:100%; height:100%">
-			</view>
+			</navigator>
 		</view>
 		<view class="footer">
 			<button class="buy" @click="goZx">立即办理(支付200元)</button>
