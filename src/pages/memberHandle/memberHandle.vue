@@ -222,9 +222,9 @@
 					uni.showToast({ title:"支付宝支付暂未开通", icon:'none' })
 					return
 				}
-				var price;
-				var detail;
-				if(this.cardType ){ price = '212' }else{ price = '200' }
+				var buytype;
+				var provandcity;
+				if(this.cardType ){ buytype = 1 } else { buytype = 0 }
 				if(this.name=="" || this.phone==""|| this.address==""||this.region==""||this.address ==""){
 					uni.showToast({
 						title:"请填写完整信息",
@@ -232,20 +232,22 @@
 					})
 					return;
 				}
-				detail = this.region[0].name + this.region[1].name + this.region[2].name + this.address
-				console.log("信息",price,this.name,this.phone,this.address,this.region,detail)
+				provandcity = this.region[0].name + ' ' + this.region[1].name + ' ' + this.region[2].name
 				request({
 					// 提交订单
 					url: "/wx-yuyihui/applets/pay/submit_order",
 					method: 'POST',
 					data: {
-						totalAmount:price,
+						// totalAmount:price,
 						subject:'微信支付',
 						// 0 支付宝 1 微信
 						paymethod:parseInt(this.payType),
 						name: this.name,
 						phone: this.phone,
-						detail: detail,	
+						provandcity: provandcity,
+						detail: this.address,	
+						cardTypeId: 1,
+						buytype: buytype
 					},
 					success: (res) => {
 						console.log('---------------',res)
@@ -309,6 +311,7 @@
 								 		}
 								 	},
 								 	fail: (err) => {
+										console.log(data)
 								 		console.log("支付状态失败:",err)
 								 		uni.showToast({
 								 			title:"支付失败",

@@ -69,8 +69,8 @@
 						header: {
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
-						url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/no_check/login",
-						// url: "https://192.168.1.169:8886/wx-yuyihui/applets/no_check/login",
+						// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/no_check/login",
+						url: "http://192.168.1.109:8886/wx-yuyihui/applets/no_check/login",
 						method: 'POST',
 						data: {
 							phone: this.inputTel,
@@ -155,7 +155,6 @@
 	.wrap {
 		width: 750upx;
 		min-height: 120upx;
-		// background-color: aqua;
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -165,7 +164,6 @@
 	.inputBox {
 		width: 686upx;
 		height: 88upx;
-		// background-color: skyblue;
 		margin-left: 32upx;
 		padding-top: 20upx;
 		margin-bottom: 10upx;
@@ -187,10 +185,6 @@
 			line-height: 88upx;
 			margin-top: 10upx;
 		}
-	// 登录
-	.logBox {
-	
-	}
 	.log {
 		width: 360upx;
 		height: 72upx;

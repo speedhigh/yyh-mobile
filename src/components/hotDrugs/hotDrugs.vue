@@ -135,7 +135,6 @@
 		width: 220upx;
 		height: 160upx;
 		margin-right: 30upx;
-		// background-color: skyblue;
 		float: left;
 		border-radius: 10upx;
 		overflow: hidden;
@@ -149,7 +148,6 @@
 		float: left;
 		width: 394upx;
 		height: 160upx;
-		// background-color: pink;
 		position: relative;
 		padding: 0;
 		

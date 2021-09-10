@@ -60,10 +60,7 @@
 						</view> -->
 						<image class="right" :src="item.img2" mode=""></image>
 					</navigator>
-
-
 				</view>
-
 				<view c class="loging">
 					<view class="logout" @click="logout">
 						退出登录
@@ -129,7 +126,15 @@
 					
 				],
 				// 其他功能区
-				otherList: [{
+				otherList: [
+					{
+						name: '我的订单',
+						img: require("../../static/images/我的/权益卡改绑icon.png"),
+						img2: require("../../static/images/我的/展开 登录.png"),
+						id: 1,
+						url: '../myOrder/myOrder',
+					},
+					{
 						name: '药品购买流程',
 						img: require("../../static/images/我的/药品.png"),
 						img2: require("../../static/images/我的/展开 登录.png"),

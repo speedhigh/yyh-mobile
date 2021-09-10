@@ -75,8 +75,8 @@
 		methods: {
 			getAxios: function() {
 				uni.request({
-					url: "https://www.yuyihui.com.cn:8886/ow-yuyihui/article_ask/detail?id=1",
-					// url: "http://192.168.1.109:8886/ow-yuyihui/article_ask/detail?id=1",
+					// url: "https://www.yuyihui.com.cn:8886/ow-yuyihui/article_ask/detail?id=1",
+					url: "http://192.168.1.109:8886/ow-yuyihui/article_ask/detail?id=1",
 					method: 'get',
 					success: (res) => {
 						console.log(res, "返回的信息");
@@ -228,8 +228,8 @@
 						header: {
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
-						url: 'https://www.yuyihui.com.cn:8886//wx-yuyihui/applets/no_check/send_captcha',
-						// url: "http://192.168.1.109:8886/wx-yuyihui/applets/no_check/send_captcha",
+						// url: 'https://www.yuyihui.com.cn:8886//wx-yuyihui/applets/no_check/send_captcha',
+						url: "http://192.168.1.109:8886/wx-yuyihui/applets/no_check/send_captcha",
 						method: 'POST',
 						data: {
 							phone: this.InputTel,
