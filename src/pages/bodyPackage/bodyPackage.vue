@@ -4,10 +4,7 @@
 			<view class="wrapBox" v-show="item.id == imgId">
 				<image class="bodyImg" :src="item.img" mode="widthFix"></image>
 			</view>
-
 		</view>
-
-
 	</view>
 </template>
 
@@ -112,7 +109,7 @@
 
 		},
 		onLoad(option) {
-			this.imgId = option.id;
+			this.imgId = option.id
 			console.log(option, "进入套餐详情", this.imgId)
 		}
 	}

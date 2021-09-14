@@ -64,12 +64,14 @@
 				<image class="pick" v-show="payType==1" src="../../static/images/我的/new/触发.png" mode=""></image>
 				<image class="pick" v-show="payType==0"  src="../../static/images/我的/new/未触发.png" mode=""></image>
 			</view>
+			<!--  
 			<view class="a2 aspect" @click="payType =0">
 				<image src="../../static/images/我的/new/支付宝.png" mode=""></image>
 				<text class="aTxt a2Txt">支付宝支付</text>
 				<image class="pick" v-show="payType==0"  src="../../static/images/我的/new/触发.png" mode=""></image>
 				<image class="pick" v-show="payType==1"  src="../../static/images/我的/new/未触发.png" mode=""></image>
 			</view>
+			-->
 		</view>
 		<button class="confirm" @click="confirm()">确认</button>	
 	</view>

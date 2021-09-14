@@ -14,9 +14,9 @@
       </view>
     </view>
     <view v-if="showLoading" class="prompt-text">加载中，请稍后……</view>
-    <view v-else>
+    <view v-else style="padding-top:40px">
       <view v-for="(item, index) in list" :key="index">
-        <order-card v-if="item.state === activeId || activeId === 0 && item.state !== 1" :msg="item" />
+        <order-card v-if="item.state === activeId || activeId === 0 && item.state !== 1" :msg="item" @confirm="confirm" />
       </view>
       <view v-if="showEmpty" class="empty-box">
         <img :src="emptyImg" class="empty-img">
@@ -50,23 +50,12 @@ export default {
     }
   },
   mounted() {
-    request({
-      url: "/wx-yuyihui/ordertbl/get_all_ordertbl",
-      method: 'GET',
-      success: (res) => {
-        this.showLoading = false
-        console.log(res.data.data)
-        this.list = res.data.data
-      },
-      fail: (err) => {
-        console.log(err)
-      }
-    })
+    this.getData()
   },
   computed: {
     showEmpty() {
       if(this.activeId === 0) {
-        if ( this.list.length === 0 ) {
+        if (this.list.length === 0) {
           return true
         } else {
           return this.list.filter(item => item.state === 1).length === this.list.length
@@ -79,8 +68,28 @@ export default {
     }
   },
   methods: {
+    getData() {
+      request({
+        url: "/wx-yuyihui/ordertbl/get_all_ordertbl",
+        method: 'GET',
+        success: (res) => {
+          this.showLoading = false
+          console.log(res.data.data)
+          this.list = res.data.data
+        },
+        fail: (err) => {
+          console.log(err)
+        }
+      })
+    },
     changeTab(id) {
+      window.scrollTo(0,0)
       this.activeId = id
+    },
+    confirm() {
+      console.log("成功")
+      this.getData()
+      this.activeId = 4
     }
   }
 }
@@ -90,8 +99,11 @@ export default {
 .main {
   background-color: #f5f5f5;
   min-height: 100vh;
+  position: relative;
 }
 .tabbar {
+  position: fixed;
+  top: 43px;
   width: 100%;
   height: 40px;
   background-color: white;
@@ -113,7 +125,7 @@ export default {
 .prompt-text {
   text-align: center;
   font-size: 14px;
-  padding: 12px;
+  padding:58px 12px 12px 12px;
   color: #666666;
 }
 .empty-box {

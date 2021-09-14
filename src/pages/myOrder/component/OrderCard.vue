@@ -61,7 +61,8 @@ export default {
           method: 'get',
           success: (res) => {
             console.log(res.data)
-            uni.navigateTo({ url: `../myOrderDetail/myOrderDetail?id=${id}` })
+            this.$emit('confirm')
+            // uni.navigateTo({ url: `../myOrderDetail/myOrderDetail?id=${id}` })
           },
           fail: (err) => {
             console.log(err)

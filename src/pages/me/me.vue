@@ -44,7 +44,7 @@
 					</view>
 				</view>
 				<view class="second">
-					<navigator :url="item.url" class="items" v-for="(item,i) in items" :key='i'>
+					<navigator :url="item.url" class="items" hover-class="none" v-for="(item,i) in items" :key='i'>
 						<image class="itemsImg" :src="item.img" mode=""></image>
 						{{ item.name }}
 					</navigator>
@@ -52,7 +52,7 @@
 				<!-- 广告banner区 -->
 				<!-- 其他功能区 -->
 				<view class="other" v-for="(item,i) in otherList" :key='i'>
-					<navigator :url="item.url" class="iconBox">
+					<navigator :url="item.url" hover-class="none" class="iconBox">
 						<image class="icon" :src="item.img" mode=""></image>
 						<view class="name">{{ item.name }}</view>
 						<!-- <view class="name">
@@ -129,7 +129,7 @@
 				otherList: [
 					{
 						name: '我的订单',
-						img: require("../../static/images/我的/权益卡改绑icon.png"),
+						img: require("../../static/images/我的/订单(1).png"),
 						img2: require("../../static/images/我的/展开 登录.png"),
 						id: 1,
 						url: '../myOrder/myOrder',

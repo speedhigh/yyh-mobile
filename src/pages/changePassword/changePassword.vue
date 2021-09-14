@@ -2,8 +2,6 @@
 	<view class="changeCard">
 		<view class="wrap">
 			<form @submit="formSubmit" @reset="formReset">
-
-
 				<view class="inputBox">
 					<image class="icon" :src="iconUser" mode=""></image>
 					<input class="input" maxlength="11" name="phone" v-model="InputTel" placeholder="请输入您要修改的账户" />
@@ -28,11 +26,8 @@
 					<view class="send" @click="sendCaptcha" type="default" :style="{backgroundColor:captchaState==true?'#0095ff':'#ddd'}">
 						{{captcha}}</view>
 				</view> -->
-
-
 				<view class="logBox">
 					<button class="log" form-type="submit">确认修改</button>
-
 					<!-- <button type="default" form-type="reset">Reset</button> -->
 				</view>
 			</form>
@@ -57,19 +52,18 @@
 				iconPass: require('../../static/images/登录页面/icon2.png'),
 			}
 		},
-
 		onLoad() {
 			console.log("开始请求")
 			// this.getAxios();
 			// this.sendCaptcha()
 		},
 		methods: {
-		
 			formSubmit: function(e) {
 				// console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
 				// var formdata = e.detail.value
 				//定义表单规则
-				var rule = [{
+				var rule = [
+					{
 						name: "phone",
 						checkType: "string",
 						checkRule: "11",
@@ -78,20 +72,19 @@
 					{
 						name: "pass",
 						errorMsg: "请输入验证码"
-					}, {
+					}, 
+					{
 						name: "newPass1",
 						checkType: "string",
 						checkRule: "6,16",
 						errorMsg: "请输入合理的新密码"
-					}, {
+					}, 
+					{
 						name: "newPass2",
 						checkType: "string",
 						checkRule: "6,16",
 						errorMsg: "请输入合理的新密码"
 					},
-
-
-
 				];
 				if (this.newPass1 != this.newPass2) {
 					uni.showToast({
@@ -112,9 +105,8 @@
 						method: 'POST',
 						data: {
 							phone: this.InputTel,
-							passwordOld: this.InputPass,
+							verificationCode: this.InputPass,
 							passwordNew: this.newPass2,
-
 						},
 						dataType: 'json',
 						success: (res) => {
@@ -131,7 +123,6 @@
 									})
 								}, 600)
 							} else {
-
 								uni.showToast({
 									title: res.data.msg,
 									icon: "none"
@@ -140,18 +131,12 @@
 							}
 						}
 					});
-
-
 				} else {
 					uni.showToast({
 						title: graceChecker.error,
 						icon: "none"
 					});
 				}
-
-
-
-
 			},
 			formReset: function(e) {
 				console.log('清空数据')
@@ -191,7 +176,6 @@
 						},
 						dataType: 'json',
 						success: (res) => {
-
 							if (res.data.code == "C_1") {
 								uni.showToast({
 									title: res.data.msg,
@@ -208,8 +192,6 @@
 							}
 						}
 					})
-					// end
-
 				} else {
 					uni.showToast({
 						title: "请输入正确的手机号",
@@ -225,14 +207,11 @@
 <style scoped>
 	.changeCard {
 		padding-top: 30upx;
-
-
 	}
 
 	.wrap {
 		width: 750upx;
 		min-height: 120upx;
-		// background-color: aqua;
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -243,7 +222,6 @@
 	.inputBox {
 		width: 686upx;
 		height: 88upx;
-		// background-color: skyblue;
 		margin-left: 32upx;
 		padding-top: 20upx;
 		margin-bottom: 10upx;
@@ -279,9 +257,6 @@
 		float: left;
 		line-height: 88upx;
 	}
-
-	// 登录
-	.logBox {}
 
 	.log {
 		width: 360upx;
