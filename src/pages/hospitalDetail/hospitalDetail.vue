@@ -60,7 +60,8 @@
 		onLoad(option) {
 			console.log('医愿传过来的数据', option)
 			uni.request({
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/hospital/nocheck/get_detail_by_id",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/hospital/nocheck/get_detail_by_id",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/hospital/nocheck/get_detail_by_id",
 				method: 'GET',
 				data: {
 					id: option.id,
@@ -120,7 +121,6 @@
 		color: #333;
 		margin-bottom: 30upx;
 		font-weight: bold;
-		// border-radius: 6upx;
 	}
 		
 	.txt {

@@ -1,7 +1,6 @@
 
 <template>
 	<!-- 专家详情组件 -->
-
 	<view class="hospital">
 		<!-- 轮播 -->
 		<swiper class="swiper" indicator-active-color='#fff' :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
@@ -17,15 +16,12 @@
 		</swiper>
 		<!-- 轮播结束 -->
 		<view class="loopBox" v-for="(item,i) in list" :key="i">
-				<view class="title">
-					{{item.title}}
-				</view>
-				<rich-text class="txt" :nodes="item.content"></rich-text>
+			<view class="title">
+				{{item.title}}
 			</view>
+			<rich-text class="txt" :nodes="item.content"></rich-text>
 		</view>
 	</view>
-
-
 </template>
 
 <script>
@@ -37,11 +33,7 @@
 						id: 1,
 						imgs: 'https://yuyihui-re.oss-cn-beijing.aliyuncs.com/fb84c5a1-08b9-421f-87a2-f518dcdc0c88.png'
 					},
-
-
 				],
-
-
 				indicatorDots: true,
 				autoplay: true,
 				interval: 2000,
@@ -60,7 +52,8 @@
 			console.log('进入专家详情')
 			console.log('医检传过来的数据', option)
 			uni.request({
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
 				method: 'GET',
 				data: {
 					id: option.id,

@@ -169,7 +169,8 @@
 		onLoad() {
 			// start
 			uni.request({
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
 				method: 'POST',
 				data: {
 					"type": [7],
@@ -189,7 +190,8 @@
 		onReachBottom: function() {
 			this.articleCurrent++;
 			uni.request({
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
 				method: 'POST',
 				data: {
 					"type": this.sortType,
@@ -219,7 +221,8 @@
 				if (index == 0) {
 					this.sortType = [7]
 					uni.request({
-						url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+						// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+						url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
 						method: 'POST',
 						data: {
 							"type": this.sortType,
@@ -238,7 +241,8 @@
 				} else if (index == 1) {
 					this.sortType = [8]
 					uni.request({
-						url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+						// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+						url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
 						method: 'POST',
 						data: {
 							"type": this.sortType,
@@ -256,7 +260,8 @@
 				} else {
 					this.sortType = [10, 11, 12]
 					uni.request({
-						url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+						// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
+						url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_information/nocheck/get_article_by_type",
 						method: 'POST',
 						data: {
 							"type": this.sortType,
@@ -371,7 +376,6 @@
 		margin-bottom: 20upx;
 	}
 
-	// 循环的资讯
 	.contOver {
 		width: 686upx;
 		height: 220upx;
@@ -389,7 +393,6 @@
 	.contOverLt {
 		float: left;
 		width: 376upx;
-		// background-color: pink;
 		height: 160upx;
 		position: relative;
 	}
@@ -427,16 +430,11 @@
 		border-radius: 6upx;
 	}
 
-	// 循环的资讯end
-	// 内容2
 	.yaoxunBox {
 		width: 750upx;
 		height: 1111upx;
-		// background-color: skyblue;
 		padding: 0 32upx;
 		box-sizing: border-box;
-
-
 	}
 
 	.yaoxunBox .swiper {
@@ -455,15 +453,11 @@
 		display: block;
 	}
 
-	// 内容3
 	.enterpriseBox {
 		width: 750upx;
 		height: 1111upx;
-		// background-color: pink;
 		padding: 0 32upx;
 		box-sizing: border-box;
-
-
 	}
 
 	.enterpriseBox .swiper {

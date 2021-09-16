@@ -42,7 +42,8 @@
 		mounted() {
 			uni.request({
 				// url: "http://47.105.107.186:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
 				method: 'get',
 				data: {
 					currentPage: '1',
@@ -65,8 +66,8 @@
 			var that = this;
 			that.indexCurrent++;
 			uni.request({
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
-				// url: "http://47.105.107.186:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
 				method: 'GET',
 				data: {
 					currentPage: that.indexCurrent,
@@ -92,8 +93,6 @@
 	.hospitalBox {
 		width: 750upx;
 		height: 100%;
-		// background-color: skyblue;
-		// box-shadow: 2px 2px 2px #f7f7f7, 2px -2px 2px #f7f7f7, -2px 2px 2px #f7f7f7, -2px -2px 2px #f7f7f7;
 		box-sizing: border-box;
 		margin: 10upx 0 30upx;
 		display: flex;
@@ -114,8 +113,6 @@
 		box-sizing: border-box;
 		padding: 30upx 0;
 		display: flex;
-		/* border-radius: 10upx; */
-		// background-color: skyblue;
 		overflow: hidden;
 		border-bottom: 1px solid #e6e6e6;
 
@@ -140,7 +137,6 @@
 		float: left;
 		width: 394upx;
 		height: 160upx;
-		// background-color: pink;
 		overflow: hidden;
 		position: relative;
 		padding: 0;
@@ -183,7 +179,6 @@
 		font-size: 28upx;
 		color: #666;
 		text-align: center;
-		// background-color: skyblue;
 		margin-bottom: 10upx;
 	}
 </style>

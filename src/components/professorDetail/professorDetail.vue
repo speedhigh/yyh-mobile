@@ -19,7 +19,7 @@
 			<view class="title">
 				{{item.title}}
 			</view>
-			<view class="txt" v-for="(item2,i2) in item.content" :key="i">
+			<view class="txt" v-for="(item2,i2) in item.content" :key="i2">
 				{{item2}}
 			</view>
 		</view>
@@ -42,9 +42,9 @@
 	         回忆录 每一步
 			周围的人也在教我 别再感情里率先出手
 			好坏都要带着面具 多考虑考虑别人的感受
-	        好吧确实就是我的错 是我渐渐变冷漠
-	       不必想象未来的轮廓  一加一等于三说过
-	       世界说等于二是因为他们不对
+				好吧确实就是我的错 是我渐渐变冷漠
+				不必想象未来的轮廓  一加一等于三说过
+				世界说等于二是因为他们不对
 		   他们在嘲讽
 		   直行的道路 你怎么走得跌跌撞撞
 			|
@@ -98,7 +98,8 @@
 		mounted() {
 			uni.request({
 				// url: "https://47.105.107.186:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
 			
 				method: 'GET',
 				data: {

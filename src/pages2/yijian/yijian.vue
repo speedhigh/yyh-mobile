@@ -371,7 +371,8 @@
 			// 	}
 			// })
 			uni.request({
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				url: 'http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital',
 				method: 'get',
 				data: {
 					currentPage: '1',
@@ -392,7 +393,6 @@
 
 <style scoped>
 	.top {
-		// background-color: #2da5be;
 		width: 750upx;
 		margin-top: 0;
 		padding-bottom: 30upx;
@@ -422,7 +422,6 @@
 		padding: 0 30upx 0;
 	}
 
-	// 优势
 	.advantageBox {
 		width: 686upx;
 		height: 520upx;
@@ -436,7 +435,6 @@
 		display: flex;
 		width: 334upx;
 		height: 250upx;
-		// background-color: skyblue;
 		box-shadow: 2upx 2upx 2upx #f7f7f7, 2upx -2upx 2upx #f7f7f7, -2upx 2upx 2upx #f7f7f7, -2upx -2upx 2upx #f7f7f7;
 		box-sizing: border-box;
 		padding: 20upx 14upx;
@@ -449,8 +447,6 @@
 		display: flex;
 		width: 80upx;
 		height: 80upx;
-		// background-color: black;
-
 	}
 
 	.firstImg {
@@ -475,13 +471,10 @@
 		text-align: center;
 	}
 
-	// 优势end
-	// 套餐
 	.packageBox {
 		width: 686upx;
 		height: 660upx;
-		// background-color: skyblue;
-	box-shadow: 2upx 2upx 2upx #f7f7f7, 2upx -2upx 2upx #f7f7f7, -2upx 2upx 2upx #f7f7f7, -2upx -2upx 2upx #f7f7f7;
+	  box-shadow: 2upx 2upx 2upx #f7f7f7, 2upx -2upx 2upx #f7f7f7, -2upx 2upx 2upx #f7f7f7, -2upx -2upx 2upx #f7f7f7;
 		padding: 20upx;
 		box-sizing: border-box;
 		margin: 40upx 0 30upx;
@@ -497,7 +490,6 @@
 	.title {
 		width: 646upx;
 		height: 52upx;
-		// background-color: pink;
 		font-size: 28upx;
 		border-bottom: 1px solid #e6e6e6;
 
@@ -522,7 +514,6 @@
 		width: 686upx;
 		height: 580upx;
 		position: absolute;
-		// background-color: skyblue;
 		top: 80upx;
 		left: 0upx;
 		z-index: 99;
@@ -552,7 +543,6 @@
 		font-size: 24upx;
 		line-height: 42upx;
 		text-align: center;
-		// padding: 15upx 10upx;
 		color: #fff;
 		background-color: #2da5be;
 		border-radius: 6upx;
@@ -563,8 +553,6 @@
 		margin: auto;
 	}
 
-	// 套餐end
-	// 专家
 	.professorBox {
 		width: 686upx;
 		height: 538upx;
@@ -583,7 +571,6 @@
 	.title {
 		width: 646upx;
 		height: 52upx;
-		// background-color: pink;
 		font-size: 28upx;
 		border-bottom: 1px solid #e6e6e6;
 
@@ -595,8 +582,6 @@
 		box-sizing: border-box;
 		padding: 30upx 0;
 		display: flex;
-		/* border-radius: 10upx; */
-		// background-color: skyblue;
 		overflow: hidden;
 		border-bottom: 1px solid #e6e6e6;
 		flex-direction: row;
@@ -620,7 +605,6 @@
 		width: 396upx;
 		height: 92upx;
 		margin-right: 54upx;
-		/* background-color: pink; */
 		position: relative;
 	}
 
@@ -656,13 +640,10 @@
 		line-height: 44upx;
 	}
 
-	// 专家end
-	// 医院
 	.hospitalBox {
 		width: 686upx;
 		height: 964upx;
-		// background-color: skyblue;
-	box-shadow: 2upx 2upx 2upx #f7f7f7, 2upx -2upx 2upx #f7f7f7, -2upx 2upx 2upx #f7f7f7, -2upx -2upx 2upx #f7f7f7;
+	  box-shadow: 2upx 2upx 2upx #f7f7f7, 2upx -2upx 2upx #f7f7f7, -2upx 2upx 2upx #f7f7f7, -2upx -2upx 2upx #f7f7f7;
 		padding: 20upx;
 		box-sizing: border-box;
 		margin: 30upx 0 30upx;
@@ -677,7 +658,6 @@
 	.title {
 		width: 646upx;
 		height: 52upx;
-		// background-color: pink;
 		font-size: 28upx;
 		border-bottom: 1px solid #e6e6e6;
 		line-height: 52upx;
@@ -697,8 +677,6 @@
 		box-sizing: border-box;
 		padding: 30upx 0;
 		display: flex;
-		/* border-radius: 10upx; */
-		// background-color: skyblue;
 		overflow: hidden;
 		border-bottom: 1px solid #e6e6e6;
 	}
@@ -723,7 +701,6 @@
 		float: left;
 		width: 394upx;
 		height: 160upx;
-		// background-color: pink;
 		overflow: hidden;
 		position: relative;
 		padding: 0;
@@ -769,7 +746,6 @@
 		overflow: hidden;
 	}
 
-	// 医院end
 	.footer {
 		width: 686upx;
 		height: 100upx;

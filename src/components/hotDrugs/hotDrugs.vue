@@ -79,7 +79,8 @@
 			// 	}
 			// })
 			uni.request({
-				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/home_page/nocheck/get_hot_drug",
+				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/home_page/nocheck/get_hot_drug",
+				url: "http://192.168.1.109:8886/wx-yuyihui/applets/home_page/nocheck/get_hot_drug",
 				method: 'get',
 				data: {
 					currentPage:'1',
