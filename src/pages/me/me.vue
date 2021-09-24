@@ -183,19 +183,19 @@
 		onShow(option) {
 			console.log('onshow')
 			let that = this;
-			uni.login({
-				provider: "weixin",
-				success: function(data) {
-					// 获取用户信息				
-					uni.getUserInfo({
-						provider: 'weixin',
-						success: function(infoRes) {
-							console.log(infoRes)
-							that.yonghuwx = infoRes.userInfo
-						}
-					});
-				}
-			});
+			// uni.login({
+			// 	provider: "weixin",
+			// 	success: function(data) {
+			// 		// 获取用户信息				
+			// 		uni.getUserInfo({
+			// 			provider: 'weixin',
+			// 			success: function(infoRes) {
+			// 				console.log(infoRes)
+			// 				that.yonghuwx = infoRes.userInfo
+			// 			}
+			// 		});
+			// 	}
+			// });
 
 			// start
 			request({
@@ -236,29 +236,29 @@
 			// end
 
 			// `1
-			uni.getUserInfo({
-				success: function(res) {
-					console.log(res);
+			// uni.getUserInfo({
+			// 	success: function(res) {
+			// 		console.log(res);
 
-				}
-			})
+			// 	}
+			// })
 
 			// 1end
 		},
 		onLoad(option) {
 			let that = this;
-			uni.login({
-				provider: "weixin",
-				success: function(data) {
-					// 获取用户信息				
-					uni.getUserInfo({
-						provider: 'weixin',
-						success: function(infoRes) {
-							that.yonghuwx = infoRes.userInfo
-						}
-					});
-				}
-			});
+			// uni.login({
+			// 	provider: "weixin",
+			// 	success: function(data) {
+			// 		// 获取用户信息				
+			// 		uni.getUserInfo({
+			// 			provider: 'weixin',
+			// 			success: function(infoRes) {
+			// 				that.yonghuwx = infoRes.userInfo
+			// 			}
+			// 		});
+			// 	}
+			// });
 			if (option.id == '32123') {
 				console.log('登录了')
 				this.logState = 1;
@@ -271,7 +271,6 @@
 				method: 'get',
 
 				success: (res) => {
-					console.log(res, " 用户信息", res.data.data.roleStr, res.data.data.cardno);
 					if (res.data.code == '0') {
 						this.logState = 1;
 						// res.data.data包含了所有的用户信息
@@ -303,11 +302,11 @@
 			// end
 
 			// `1
-			uni.getUserInfo({
-				success: function(res) {
-					console.log(res);
-				}
-			})
+			// uni.getUserInfo({
+			// 	success: function(res) {
+			// 		console.log(res);
+			// 	}
+			// })
 
 			// 1end
 		},
@@ -362,7 +361,7 @@
 			},
 			logout: function(e) {
 				this.logState = 0;
-				uni.setStorage({key: 'xtoken',data: '1'	});
+				uni.removeStorage({key: 'xtoken'});
 				uni.reLaunch({ url: "./me" })
 			},
 		},

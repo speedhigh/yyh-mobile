@@ -57,7 +57,6 @@
 
 		onLoad() {
 			console.log("开始请求")
-			this.getAxios();
 			// this.sendCaptcha()
 		},
 		mounted: function() {
@@ -73,19 +72,6 @@
 
 		},
 		methods: {
-			getAxios: function() {
-				uni.request({
-					// url: "https://www.yuyihui.com.cn:8886/ow-yuyihui/article_ask/detail?id=1",
-					url: "http://192.168.1.109:8886/ow-yuyihui/article_ask/detail?id=1",
-					method: 'get',
-					success: (res) => {
-						console.log(res, "返回的信息");
-					},
-					fail: (err) => {
-						console.log(err)
-					}
-				})
-			},
 			cardChange(card) {
 				this.InputCard = card;
 			},

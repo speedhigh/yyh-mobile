@@ -1,16 +1,12 @@
 <template>
 	<!--搜索-->
 	<view>
-
-
-
 		<!-- 头部搜索 -->
 		<!-- 	<view class="searchBox">
 
 			<input @focus="searchFocus()" class="search" type="text" :placeholder="inputPlaceHolder" v-model="seacrchContnt" />
 			<image @click="goSearch(seacrchContnt)" class="searchIcon" :src="seacrchIcon" mode=""></image>
 		</view> -->
-
 		<!--主体-->
 		<view class="idxMain">
 		<view class="shopOver" v-show="!contTwoList">
@@ -53,10 +49,7 @@
 				seacrchIcon: require("../../static/images/index/搜索.png"),
 				inputPlaceHolder: "请输入要搜索的药品名和症状",
 				length: '',
-				contTwoList: [
-
-				],
-
+				contTwoList: [],
 				commodityId: '',
 				searchContent: "",
 				Current: 1,
@@ -64,30 +57,7 @@
 		},
 		onLoad(option) {
 			// start
-
-			console.log("搜索的是啥", option)
 			this.search();
-
-		},
-		onReachBottom: function() {
-			this.Current++;
-			request({
-				url: "/wx-yuyihui/applets/user_interface/get_mycollection",
-				method: 'post',
-				data: {
-					current: this.Current,
-					size: 8,
-				},
-				success: (res) => {
-					console.log("返回的信息", res);
-					// res.data.data.length
-					this.contTwoList = this.contTwoList.concat(res.data.data);
-					this.length = res.data.data.length;
-				},
-				fail: (err) => {
-					console.log(err)
-				}
-			})
 		},
 		methods: {
 			//首页头部tab点击切换
@@ -182,7 +152,6 @@
 	.search {
 		width: 686upx;
 		height: 60upx;
-		// background-color: skyblue;
 		border-radius: 30upx;
 		text-align: center;
 		margin: 30upx 0;
@@ -247,7 +216,6 @@
 	.contTime {
 		color: #888888;
 		font-size: 24upx;
-		// margin-top: 40upx;
 		position: absolute;
 		bottom: 30upx;
 	}
@@ -340,20 +308,15 @@
 			color: red;
 		}
 
-
-	// 五个分类
 	.sort {
 		margin-top: 30upx;
 		margin-bottom: 30upx;
 		width: 686upx;
 		height: 102upx;
 		box-sizing: border-box;
-
-
-	
 	}
+
 	.items {
-		// 每个137
 		width: 100upx;
 		height: 100upx;
 		margin-right: 19upx;
@@ -373,7 +336,9 @@
 		font-size: 24upx;
 		color: #333;
 	}
+
 	.items:nth-child(5) {
 		margin-right: 0;
 	}
+
 </style>

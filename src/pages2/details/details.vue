@@ -1,10 +1,5 @@
 <template>
 	<view class="commodity">
-		<!-- 未闻花名remix
-			碎片 
-			纪念
-		 
-		 -->
 		<view class="topImgBox">
 			<image :src="commodityList.thumbnail" mode="heightFix"></image>
 		</view>
@@ -13,9 +8,9 @@
 			<view class="title">
 				{{commodityList.namechs}}
 			</view>
-			<view v-show="" class="page1">
-				<!-- {{commodityList.symptom}}	 -->
-			</view>
+			<!-- <view v-show="" class="page1">
+				{{commodityList.symptom}}
+			</view> -->
 			<view class="messBox">
 				<view class="one">
 					<text class="spec big">¥{{commodityList.price}}</text><text>{{commodityList.country}}</text><text>规格:{{commodityList.specification}}</text>
@@ -133,16 +128,17 @@
 				});
 			},
 			choice: function(e) {
+				if(!uni.getStorageSync('xtoken')) {
+					uni.showToast({
+						title: '请您先登录',
+						icon: 'none'
+					})
+					return
+				}
 				uni.getStorage({
 					key: 'xtoken',
 					success: function(res) {
 						console.log(res.data, "点击收藏得到的xtoken");
-						if (res.data == "") {
-							uni.showToast({
-								title: '请您先登录',
-								icon: 'none'
-							})
-						}
 					}
 				});
 				console.log(e, "药品id", typeof(e))
@@ -171,6 +167,7 @@
 									icon: 'none'
 								})
 							}
+							this.back()
 						},
 						fail: (err) => {
 							console.log(err)
@@ -199,6 +196,7 @@
 									icon: 'none'
 								})
 							}
+							this.back()
 						},
 						fail: (err) => {
 							console.log(err)
@@ -207,7 +205,16 @@
 					// end
 
 				}
-
+			},
+			back() {
+				let pages = getCurrentPages()
+				if (pages.length > 1) {
+					let beforePage = pages[pages.length - 2]
+					if(beforePage.route === 'pages2/myCollection/myCollection') {
+						console.log('bbb',beforePage)
+						beforePage.search()
+					}
+				}
 			},
 			search(a) {
 				// start
@@ -305,16 +312,12 @@
 		font-weight: bold;
 	}
 
-	// 内容
-	.content {}
-
 	.title {
 		font-size: 32upx;
 		line-height: 42upx;
 		width: 686upx;
 		height: 84upx;
 		margin: 40upx 0 20upx;
-		// background-color: aqua;
 		font-weight: bold;
 	}
 
@@ -322,7 +325,6 @@
 		width: 686upx;
 		height: 74upx;
 		margin-bottom: 40upx;
-		// background-color: skyblue;
 		font-size: 26upx;
 		position: relative;
 	}
@@ -342,8 +344,6 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		
-
 	}
 
 	.one text {
@@ -357,7 +357,6 @@
 		bottom: -10upx;
 	}
 
-
 	.right {
 		position: absolute;
 		top: 0;
@@ -366,17 +365,17 @@
 		height: 74upx;
 		text-align: center;
 		font-size: 18upx;
-		
 	}
+
 	.right .zi{
 		display: inline-block;
 	}
+
 	.like {
 		width: 48upx;
 		height: 48upx;
 	}
 
-	// 循环的说明
 	.list {
 		margin-bottom: 20upx;
 		font-size: 26upx;
@@ -390,17 +389,20 @@
 		word-break: break-all;
 		word-wrap: break-word;
 	}
+
 	.div{
 		margin-bottom: 20upx;
 		font-size: 26upx;
 		width: 686upx;
 	}
+
 	.div text {
 		width: 686upx;
 		font-size: 26upx;
 		word-break: break-all;
 		word-wrap: break-word;
 	}
+
 	.listContent {
 		font-size: 26upx;
 	}

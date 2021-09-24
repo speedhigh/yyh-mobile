@@ -11,7 +11,7 @@
         <view style="color: #999999;">x1</view>
         <view class="card-content-bottom">
           <view style="color: #FF3333; font-size: 11px; font-weight: 800">
-            <text style="font-size: 18px">{{ msg.unitPrice * 1 }}</text>￥
+            <text style="font-size: 18px">{{ +msg.unitPrice }}</text>￥
           </view>
           <view style="margin-left: auto;">
             <view
