@@ -1,19 +1,14 @@
 <template>
 	<!--搜索-->
 	<view>
-		<!-- 头部搜索 -->
-		<!-- 	<view class="searchBox">
-
-			<input @focus="searchFocus()" class="search" type="text" :placeholder="inputPlaceHolder" v-model="seacrchContnt" />
-			<image @click="goSearch(seacrchContnt)" class="searchIcon" :src="seacrchIcon" mode=""></image>
-		</view> -->
 		<!--主体-->
-		<view class="idxMain">
-		<view class="shopOver" v-show="!contTwoList">
-			
-			<image class="noContent" src="../../static/images/暂无内容.png" mode=""></image>
-		<!-- 	只保留最近的50条浏览记录哟~ -->
+		<view v-show="showLoading" style="text-align:center; padding:12px; font-size:14px">
+			加载中……
 		</view>
+		<view class="idxMain">
+			<view class="shopOver" v-show="!contTwoList">
+				<image class="noContent" src="../../static/images/暂无内容.png" mode=""></image>
+			</view>
 			<!--内容2 商品-->
 			<view class="shopOver" >
 				<!-- <view class="contTitle">
@@ -31,13 +26,10 @@
 				</view>
 			</view>
 			<!--内容2-->
-		<view class="shopOver" v-show="length < 1 && contTwoList">
+			<view class="shopOver" v-show="showEnding" style="text-align:center; font-size:14px">
 				只保留最近的50条收藏哟~
+			</view>
 		</view>
-
-		</view>
-		<!--主体-->
-
 	</view>
 </template>
 
@@ -46,10 +38,9 @@
 	export default {
 		data() {
 			return {
-				seacrchIcon: require("../../static/images/index/搜索.png"),
-				inputPlaceHolder: "请输入要搜索的药品名和症状",
-				length: '',
 				contTwoList: [],
+				showEnding: false,
+				showLoading:true,
 				commodityId: '',
 				searchContent: "",
 				Current: 1,
@@ -62,7 +53,7 @@
 		methods: {
 			//首页头部tab点击切换
 			// IsHeadTabClick: function(index, item) {
-			// 	this.headTabIdx = index;
+			//   this.headTabIdx = index;
 			// },
 			//官网复制的轮播
 			changeIndicatorDots(e) {
@@ -86,17 +77,6 @@
 				})
 
 			},
-			goSearch(e) {
-				console.log("去搜索", e);
-				this.searchContent = e;
-				uni.navigateTo({
-					url: `../../pages2/searchDetail/searchDetail?searchContent=${this.searchContent}`,
-				})
-			},
-			searchFocus() {
-				console.log("聚焦");
-				this.inputPlaceHolder = "";
-			},
 			// start
 			search() {
 				request({
@@ -108,10 +88,12 @@
 					},
 					success: (res) => {
 						console.log("返回的信息", res);
+						if(res.data.data.length > 0) { this.showEnding = true }
 						this.contTwoList = res.data.data;
-						this.length = res.data.data.length;
+						this.showLoading = false
 					},
 					fail: (err) => {
+						this.showLoading = false
 						console.log(err)
 					}
 				})
@@ -134,19 +116,6 @@
 		margin-left: 32upx;
 		margin-bottom: 122upx;
 		margin-top: 315upx;
-	}
-	.searchBox {
-		position: relative;
-	}
-
-	.searchIcon {
-		position: absolute;
-		right: 35upx;
-		top: 15upx;
-		width: 40upx;
-		height: 32upx;
-		z-index: 99;
-
 	}
 
 	.search {

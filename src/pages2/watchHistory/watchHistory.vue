@@ -1,28 +1,16 @@
 <template>
 	<!--搜索-->
 	<view>
-
-
-
-		<!-- 头部搜索 -->
-		<!-- 	<view class="searchBox">
-
-			<input @focus="searchFocus()" class="search" type="text" :placeholder="inputPlaceHolder" v-model="seacrchContnt" />
-			<image @click="goSearch(seacrchContnt)" class="searchIcon" :src="seacrchIcon" mode=""></image>
-		</view> -->
-
 		<!--主体-->
 		<view class="idxMain">
+			<view style="text-align:center; font-size:14px; padding:12px" v-show="showLoading">
+				加载中……
+			</view>
 			<view class="shopOver" v-show="!contTwoList">
-
 				<image class="noContent" src="../../static/images/暂无内容.png" mode=""></image>
-				<!-- 	只保留最近的50条浏览记录哟~ -->
 			</view>
 			<!--内容2 商品-->
 			<view class="shopOver">
-				<!-- <view class="contTitle">
-							<view class="idxMainBox">推荐商品</view>
-						</view> -->
 				<view class="idxMainBox">
 					<view class="shopLt" v-for="(item,index) in contTwoList" :key='index' @click="goCommodity(item.id)">
 						<view class="shopImg">
@@ -34,15 +22,9 @@
 					</view>
 				</view>
 			</view>
-		
 			<!--内容2-->
-			<view class="shopOver" v-show="length < 1 && contTwoList">
-				只保留最近的50条历史记录哟~
-			</view>
-
+			<view class="shopOver" v-show="showEnding">只保留最近的50条历史记录哟~</view>
 		</view>
-		<!--主体-->
-
 	</view>
 </template>
 
@@ -53,48 +35,17 @@
 			return {
 				seacrchIcon: require("../../static/images/index/搜索.png"),
 				inputPlaceHolder: "请输入要搜索的药品名和症状",
-				length: '',
-				contTwoList: [
-
-				],
-
+				contTwoList: [],
+				showLoading: true,
+				showEnding: false,
 				commodityId: '',
-				searchContent: "",
 				Current: 1,
 			}
 		},
 		onLoad(option) {
-			// start
-
-			console.log("搜索的是啥", option)
-			this.search();
-
-		},
-		onReachBottom: function() {
-			this.Current++;
-			request({
-				url: "/wx-yuyihui/applets/user_interface/get_history",
-				method: 'post',
-				data: {
-					current: this.Current,
-					size: 8,
-				},
-				success: (res) => {
-					console.log("浏览历史", res);
-					this.contTwoList = this.contTwoList.concat(res.data.data);
-					this.length = res.data.data.length;
-				},
-				fail: (err) => {
-					console.log(err)
-				}
-			})
+			this.search()	
 		},
 		methods: {
-			//首页头部tab点击切换
-			// IsHeadTabClick: function(index, item) {
-			// 	this.headTabIdx = index;
-			// },
-			//官网复制的轮播
 			changeIndicatorDots(e) {
 				this.indicatorDots = !this.indicatorDots
 			},
@@ -115,39 +66,25 @@
 				uni.navigateTo({
 					url: `../../pages2/details/details?id=${this.commodityId}`,
 				})
-
-			},
-			goSearch(e) {
-				console.log("去搜索", e);
-				this.searchContent = e;
-				uni.navigateTo({
-					url: `../../pages2/searchDetail/searchDetail?searchContent=${this.searchContent}`,
-				})
-			},
-			searchFocus() {
-				console.log("聚焦");
-				this.inputPlaceHolder = "";
 			},
 			// start
 			search() {
 				request({
 					url: "/wx-yuyihui/applets/user_interface/get_history",
 					method: 'post',
-					data: {
-						current: 1,
-						size: 8,
-					},
+					data: { current: 1, size: 8 },
 					success: (res) => {
 						console.log("返回的信息", res);
+						if (res.data.data.length > 0) { this.showEnding = true }
 						this.contTwoList = res.data.data;
-						this.length = res.data.data.length;
+						this.showLoading = false
 					},
 					fail: (err) => {
 						console.log(err)
+						this.showLoading = false
 					}
 				})
 			}
-			// end
 		}
 	}
 </script>
@@ -165,32 +102,6 @@
 		margin-left: 32upx;
 		margin-bottom: 122upx;
 		margin-top: 315upx;
-	}
-
-	.searchBox {
-		position: relative;
-	}
-
-	.searchIcon {
-		position: absolute;
-		right: 35upx;
-		top: 15upx;
-		width: 40upx;
-		height: 32upx;
-		z-index: 99;
-
-	}
-
-	.search {
-		width: 686upx;
-		height: 60upx;
-		// background-color: skyblue;
-		border-radius: 30upx;
-		text-align: center;
-		margin: 30upx 0;
-		border: 1px solid #f1f1f1;
-		font-size: 26upx;
-		color: #999999;
 	}
 
 	.swiper {
@@ -249,7 +160,6 @@
 	.contTime {
 		color: #888888;
 		font-size: 24upx;
-		// margin-top: 40upx;
 		position: absolute;
 		bottom: 30upx;
 	}
@@ -268,18 +178,11 @@
 		border-radius: 6upx;
 	}
 
-	.contTitle {
-		background: #FFFFFF;
-		font-size: 30upx;
-		color: #3B7ED5;
-		height: 80upx;
-		line-height: 80upx;
-		border-bottom: 1px #F5F5F5 solid;
-	}
-
 	.shopOver {
 		overflow: hidden;
-		margin-bottom: 30upx;
+		padding-bottom: 24px;
+		text-align: center;
+		font-size: 14px;
 	}
 
 	.shopLt {
@@ -327,14 +230,14 @@
 	.shopMoney {
 		padding: 0 20upx;
 		font-size: 24upx;
-	padding: 8upx 14upx 0 12upx;
-	display: block;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	color: #aaa;
-	height: 36upx;
-	line-height: 36upx;
+		padding: 8upx 14upx 0 12upx;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #aaa;
+		height: 36upx;
+		line-height: 36upx;
 	}
 
 	.shopMoney .money {
@@ -342,20 +245,15 @@
 		color: red;
 	}
 
-
-	// 五个分类
 	.sort {
 		margin-top: 30upx;
 		margin-bottom: 30upx;
 		width: 686upx;
 		height: 102upx;
 		box-sizing: border-box;
-
-
 	}
 
 	.items {
-		// 每个137
 		width: 100upx;
 		height: 100upx;
 		margin-right: 19upx;

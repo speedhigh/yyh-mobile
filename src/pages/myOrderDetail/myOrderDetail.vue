@@ -23,7 +23,7 @@
           <view class="text-gray-900">x{{ dtlMsg.count }}</view>
           <view class="card-bottom">
             <view style="color: #FF3333; font-size: 11px; font-weight: 800">
-              <text style="font-size: 18px">{{ dtlMsg.unitPrice }}</text>￥
+              <text style="font-size: 18px">{{ +dtlMsg.unitPrice }}</text>￥
             </view>
           </view>
         </view> 

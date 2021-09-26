@@ -14,8 +14,8 @@
 			<!-- 登录后 -->
 			<view class="page2" v-show="logState === 1">
 				<view style="position:absolute;margin-top:40upx; width:100%; display:flex;justify-content: center;">
-					<view style="position:relative;">
-						<img :src="typeImaRole" style="width:343px; height:180px">
+					<view style="position:relative; border-radius: 0.5rem;">
+						<img :src="typeImaRole" style="width:343px; height:180px; border-radius: 0.5rem;">
 						<view class="info">
 							<p>用户{{ user }}</p>
 							<p v-if="roleStr !== '普通用户' && !expire" style="font-size: 22upx; margin-top:10upx">{{ dueDate }}到期</p>
@@ -39,7 +39,7 @@
 					>
 						<view style="height:190px"></view>
 						<view style="position:absolute; bottom:0px;">
-							<img :src="dividersImg" style="width:100%; margin-bottom:-6px">
+							<img :src="dividersImg" style="width:100%; margin-bottom:-7px">
 						</view>
 					</view>
 				</view>
@@ -90,9 +90,9 @@
 				user: "",
 				dueDate:"",
 				headImg2: require("../../static/images/我的/头像未登录.png"),
-				typeImg: require("../../static/images/我的/卡面.png"),
-				yueCardImg: require("../../static/images/我的/悦享.png"),
-				zunCardImg: require("../../static/images/我的/尊享.png"),
+				typeImg: require("../../static/images/我的/卡面.jpg"),
+				yueCardImg: require("../../static/images/我的/悦享.jpg"),
+				zunCardImg: require("../../static/images/我的/尊享.jpg"),
 				dividersImg: require("../../static/images/我的/上面的盖子.png"),
 				typeImaRole: undefined,
 				cardno: "未绑定",
