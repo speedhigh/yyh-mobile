@@ -19,7 +19,7 @@
 		<classify></classify>
 		<image @click="goMember()" class="adv" src="../../static/images/index/banner.png" mode=""></image>
 		<!-- 不同国家 -->
-		<country></country>
+		<country />
 		<hotDrugs></hotDrugs>
 
 		<view class="footer">

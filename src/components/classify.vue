@@ -2,7 +2,6 @@
 	<view name="classify" class="classifyBox">
 		<view class="classify">
 			<span v-for="(item,i) in list" :key="i" class="item" @click="goSearch(item.search)">
-
 				<view class="imgBox">
 					<image class="classifyImg" :src="item.img" mode=""></image>
 				</view>
@@ -13,7 +12,6 @@
 		</view>
 		<view class="classify">
 			<span v-for="(item,i) in list2" :key="i" class="item" @click="goSearch(item.search)">
-
 				<view class="imgBox">
 					<image class="classifyImg" :src="item.img" mode=""></image>
 				</view>
@@ -106,7 +104,6 @@
 	.classify {
 		width: 686upx;
 		height: 130upx;
-		// background-color: skyblue;
 		margin-top: 20upx;
 		display: flex;
 		flex-wrap: nowrap;
@@ -116,7 +113,6 @@
 	.item {
 		width: 98upx;
 		height: 130upx;
-		// background-color: pink;
 		display: inline-block;
 	}
 	.imgBox {
@@ -124,7 +120,6 @@
 		margin-left: 10upx;
 		width: 88upx;
 		height: 88upx;
-		// background-color: skyblue;
 		display: block;
 	}
 		
@@ -137,7 +132,6 @@
 		/* font-size: 24upx; */
 		font-size: 24upx;
 		color: #333;
-		// background-color: pink;
 		width: 110upx;
 		height: 26upx;
 		text-align: center;

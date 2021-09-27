@@ -106,8 +106,8 @@
 				console.log("搜索的内容", a)
 				this.a = a
 				uni.request({
-					// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/home_page/nocheck/search",
-					url: 'http://192.168.1.109:8886/wx-yuyihui/applets/home_page/nocheck/search',
+					url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/home_page/nocheck/search",
+					// url: 'http://192.168.1.109:8886/wx-yuyihui/applets/home_page/nocheck/search',
 					method: 'get',
 					data: {
 						'current': 1,
@@ -134,8 +134,8 @@
 			this.indexCurrent++;
 			let  a = this.a;
 			uni.request({
-				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/home_page/nocheck/search",
-				url: 'http://192.168.1.109:8886/wx-yuyihui/applets/home_page/nocheck/search',
+				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/home_page/nocheck/search",
+				// url: 'http://192.168.1.109:8886/wx-yuyihui/applets/home_page/nocheck/search',
 				
 				method: 'GET',
 				data: {

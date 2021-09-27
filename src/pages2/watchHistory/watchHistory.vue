@@ -75,7 +75,7 @@
 					data: { current: 1, size: 8 },
 					success: (res) => {
 						console.log("返回的信息", res);
-						if (res.data.data.length > 0) { this.showEnding = true }
+						if (res.data.data && res.data.data.length > 0) { this.showEnding = true }
 						this.contTwoList = res.data.data;
 						this.showLoading = false
 					},

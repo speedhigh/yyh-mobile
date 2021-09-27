@@ -25,8 +25,7 @@
 					</view>
 				</view>
 			</view>
-			<!--内容2-->
-			<view class="shopOver" v-show="showEnding" style="text-align:center; font-size:14px">
+			<view class="shopOver" v-show="showEnding && contTwoList" style="text-align:center; font-size:14px">
 				只保留最近的50条收藏哟~
 			</view>
 		</view>
@@ -87,10 +86,10 @@
 						size: 8,
 					},
 					success: (res) => {
-						console.log("返回的信息", res);
-						if(res.data.data.length > 0) { this.showEnding = true }
-						this.contTwoList = res.data.data;
+						console.log("返回的信息", res.data.data);
 						this.showLoading = false
+						if(res.data.data && res.data.data.length > 0) { this.showEnding = true }
+						this.contTwoList = res.data.data;
 					},
 					fail: (err) => {
 						this.showLoading = false

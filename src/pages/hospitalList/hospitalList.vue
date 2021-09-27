@@ -42,8 +42,8 @@
 		mounted() {
 			uni.request({
 				// url: "http://47.105.107.186:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
-				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
-				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				// url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
 				method: 'get',
 				data: {
 					currentPage: '1',
@@ -66,8 +66,8 @@
 			var that = this;
 			that.indexCurrent++;
 			uni.request({
-				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
-				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
+				// url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_hospital",
 				method: 'GET',
 				data: {
 					currentPage: that.indexCurrent,

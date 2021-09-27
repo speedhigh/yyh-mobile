@@ -94,8 +94,8 @@
 			search(a) {
 				// start
 				uni.request({
-					// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/article/no_check/get_drug_detail",
-					url: "http://192.168.1.109:8886/wx-yuyihui/applets/article/no_check/get_drug_detail",
+					url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/article/no_check/get_drug_detail",
+					// url: "http://192.168.1.109:8886/wx-yuyihui/applets/article/no_check/get_drug_detail",
 					method: 'get',
 					data: {
 						id: a

@@ -52,8 +52,8 @@
 			console.log('进入专家详情')
 			console.log('医检传过来的数据', option)
 			uni.request({
-				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
-				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				// url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
 				method: 'GET',
 				data: {
 					id: option.id,

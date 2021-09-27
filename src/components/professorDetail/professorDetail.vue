@@ -98,8 +98,8 @@
 		mounted() {
 			uni.request({
 				// url: "https://47.105.107.186:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
-				// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
-				url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
+				// url: "http://192.168.1.109:8886/wx-yuyihui/applets/medical_examination/nocheck/get_expert_by_id",
 			
 				method: 'GET',
 				data: {

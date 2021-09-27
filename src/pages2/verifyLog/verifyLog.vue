@@ -80,8 +80,8 @@
 						header: {
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
-						// url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/no_check/login",
-						url: 'http://192.168.1.109:8886/wx-yuyihui/applets/no_check/login',
+						url: "https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/no_check/login",
+						// url: 'http://192.168.1.109:8886/wx-yuyihui/applets/no_check/login',
 						method: 'POST',
 						data: {
 							phone: this.InputNewPhone,
@@ -172,8 +172,8 @@
 						header: {
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
-						// url: 'https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/no_check/send_captcha',
-						url: 'http://192.168.1.109:8886/wx-yuyihui/applets/no_check/send_captcha',
+						url: 'https://www.yuyihui.com.cn:8886/wx-yuyihui/applets/no_check/send_captcha',
+						// url: 'http://192.168.1.109:8886/wx-yuyihui/applets/no_check/send_captcha',
 						method: 'POST',
 						data: {
 							phone: this.InputNewPhone,
